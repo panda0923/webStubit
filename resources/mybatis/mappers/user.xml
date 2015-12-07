@@ -78,23 +78,5 @@
 												WHERE user_id = #{userId}    ))
 	</select>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<select id="getMessageList" parameterType="string" resultType="MessageVo" >
-							 select from_user_no 	AS 	fromUserNo,
-							 		to_user_no		AS	toUserNo,
-							 		created_date	AS	createdDate,
-							 		message
-							 from b_message
-						     where to_user_no =  #{userId}	)
-	</select>
+
 </mapper>

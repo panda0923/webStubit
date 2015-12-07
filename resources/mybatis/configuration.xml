@@ -9,6 +9,7 @@
 		<typeAlias alias="GroupVo" type="com.bit2015.bitin.vo.GroupVo"></typeAlias>
 		<typeAlias alias="ClassVo" type="com.bit2015.bitin.vo.ClassVo"></typeAlias>
 		<typeAlias alias="QnaQVo" type="com.bit2015.bitin.vo.QnaQVo"></typeAlias>
+		<typeAlias alias="MessageVo" type="com.bit2015.bitin.vo.MessageVo"></typeAlias>
 	</typeAliases>
 
 	<mappers>	
