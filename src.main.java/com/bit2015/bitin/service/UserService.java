@@ -118,9 +118,10 @@ public class UserService {
 	    
 	}
 	
-	/**
+	/************* TEST 완료 
 	 * @param userId
-	 * @return
+	 * @return userId가 들어가 있는 수업의 목록
+	 * List<String >    형태로 
 	 */
 	public List<String>  getClassNameListByTeacherId (String userId) {
 		List<String> retList = null;
@@ -128,4 +129,5 @@ public class UserService {
 		retList = userDao.getClassNameListByTeacherId(userId);
 		return retList;
 	}
+
 }

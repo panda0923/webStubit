@@ -85,7 +85,7 @@ public class TesterController {
 //		attdVo.setRandomNumber(1522L);
 //		attdService.insertAttdNumberVo(attdVo);
 		
-		return "TESTED!";
+		return "aBC!";
 	}
 
 }
