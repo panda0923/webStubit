@@ -40,8 +40,6 @@ public class MainController {
 		}
 		
 		
-
-		
 		return "main/main";
 	}
 	@RequestMapping("/")
@@ -108,20 +106,4 @@ public class MainController {
 	 * 
 	 */
 
-
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
 }

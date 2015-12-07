@@ -15,9 +15,47 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta charset="utf-8">
-    <script>
+<script>
+
+
+function check() { 
+	if ($("input#id").val() == "") {
+		alert("id를 입력해주세요");
+		$("input#id").focus();
+		event.preventDefault();
+	}
+	else if ($("input#password").val() == "") {
+		alert("비밀번호를 입력해주세요");
+		$("input#password").focus();
+		event.preventDefault();
+	}
+	/* else{
+		event.preventDefault();
+		$.ajax({
+			async:false,			// 이거 안하면  event.preventDefault() 가 안먹힘. thread따로 돌리면서 else바깥 부분이 오히려 먼저 시작되어버림
+			url:"/bitin/api/user/test",
+			type: "get",
+			dataType: "json",
+			data: "userId="+$("input#input-id").val()+"&userPassword="+$("input#input-pwd").val(),
+			contentType: "application/json",
+			success: function(response){		//보통 data보다는 response라고 쓰는게 맞음
+				console.log( response );	
+				if(response.result == "fail"){	//로그인 실패
+					alert(response.message);
+					event.preventDefault();
+				}
+				else{	//로그인 성공 
+				}
+			},
+			error: function( jqXHR, status, e ){	//통신오류
+				event.preventDefault();
+				alert( "ajax error[ status : "+status + " // error : " + e +"]");
+			}
+		})
+	} */
+}
+</script>
     
-    </script>
 </head>
 <body class="background-dark">
         <div class="single-widget-container">
@@ -27,7 +65,7 @@
                 </header>
                 <div class="body">
                     <form class="no-margin"
-                          action="index.html" method="get">
+                          action="/bitin/login" method="post">
                         <fieldset>
                             <div class="form-group">
                                 <label for="ID" >ID</label>
@@ -35,8 +73,8 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-user"></i>
                                     </span>
-                                    <input id="id" type="id" class="form-control input-lg input-transparent"
-                                           placeholder="아이디를 입력해주세요">
+                                    <input id="id" name="userId" type="id" class="form-control input-lg input-transparent"
+                                           placeholder="아이디를 입력해주세요" >
                                 </div>
                             </div>
                             <div class="form-group">
@@ -45,13 +83,13 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-lock"></i>
                                     </span>
-                                    <input id="password" type="password" class="form-control input-lg input-transparent"
+                                    <input id="password" name="userPassword" type="password" class="form-control input-lg input-transparent"
                                            placeholder="비밀번호를 입력해주세요">
                                 </div>
                             </div>
                         </fieldset>
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-block btn-lg btn-danger">
+                            <button type="submit" class="btn btn-block btn-lg btn-danger" onclick="check();">
                                 <span class="small-circle"><i class="fa fa-caret-right"></i></span>
                                 <small>로그인</small>
                             </button>
@@ -67,15 +105,15 @@
             </section>
         </div>
 <!-- common libraries. required for every page-->
-<script src="lib/jquery/dist/jquery.min.js"></script>
-<script src="lib/jquery-pjax/jquery.pjax.js"></script>
-<script src="lib/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
-<script src="lib/widgster/widgster.js"></script>
-<script src="lib/underscore/underscore.js"></script>
+<script src="/bitin/assets/lib/jquery/dist/jquery.min.js"></script>
+<script src="/bitin/assets/lib/jquery-pjax/jquery.pjax.js"></script>
+<script src="/bitin/assets/lib/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+<script src="/bitin/assets/lib/widgster/widgster.js"></script>
+<script src="/bitin/assets/lib/underscore/underscore.js"></script>
 
 <!-- common application js -->
-<script src="js/app.js"></script>
-<script src="js/settings.js"></script>
+<script src="/bitin/assets/js/app.js"></script>
+<script src="/bitin/assets/js/settings.js"></script>
 
 
 
