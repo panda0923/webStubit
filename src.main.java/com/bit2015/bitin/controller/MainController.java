@@ -94,6 +94,7 @@ public class MainController {
 		else{
 			UserVo retUserVo = userService.getUserVoViaIdAndPassword(userVo);
 			if( retUserVo == null ) {
+				return "redirect:/loginform";
 				//로그인실패 - 어차피 modal ajax에서 미리 check 해서 실패 case없음
 			}
 			else{
@@ -102,7 +103,7 @@ public class MainController {
 		}
 		Map<String, Object> retMap = new HashMap<String, Object>();
 		retMap.put("result","success");
-		return "redirect:/main";
+		return "redirect:/index";
 	}
 	
 	@RequestMapping("/logout")
