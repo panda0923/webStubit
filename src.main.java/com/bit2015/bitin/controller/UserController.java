@@ -14,10 +14,10 @@ import com.bit2015.bitin.service.MessageService;
 import com.bit2015.bitin.service.UserService;
 
 @Controller
-public class MessageController {
+public class UserController {
 
 	@Autowired
-	MessageService userService;
+	MessageService messageService;
 	
 
 	@ResponseBody
@@ -26,7 +26,7 @@ public class MessageController {
 			@RequestParam(value = "userId", required=false)String userId	) {
 		
 		HashMap<String, Object> retMap = new HashMap<String, Object>();
-		List<String> retList = MessageService.getMessageList(userId);
+		List<String> retList = messageService.getMessageList(userId);
 		
 		retMap.put("result", "success");
 		retMap.put("data", retList);
