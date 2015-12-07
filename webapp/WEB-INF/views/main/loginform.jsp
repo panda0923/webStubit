@@ -16,7 +16,20 @@
     <meta name="author" content="">
     <meta charset="utf-8">
     <script>
-    
+
+
+    function check() { 
+       if ($("input#id").val() == "") {
+          alert("id를 입력해주세요");
+          $("input#input-id").focus();
+          event.preventDefault();
+       }
+       else if ($("input#password").val() == "") {
+          alert("비밀번호를 입력해주세요");
+          $("input#p").focus();
+          event.preventDefault();
+       }
+    }
     </script>
 </head>
 <body class="background-dark">
@@ -27,7 +40,7 @@
                 </header>
                 <div class="body">
                     <form class="no-margin"
-                          action="index.html" method="get">
+                          action="/bitin/login" method="post">
                         <fieldset>
                             <div class="form-group">
                                 <label for="ID" >ID</label>
@@ -35,7 +48,7 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-user"></i>
                                     </span>
-                                    <input id="id" type="id" class="form-control input-lg input-transparent"
+                                    <input id="id" type="id" name="userId" class="form-control input-lg input-transparent"
                                            placeholder="아이디를 입력해주세요">
                                 </div>
                             </div>
@@ -45,13 +58,14 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-lock"></i>
                                     </span>
-                                    <input id="password" type="password" class="form-control input-lg input-transparent"
+                                    <input id="password" type="password" name="userPassword" class="form-control input-lg input-transparent"
                                            placeholder="비밀번호를 입력해주세요">
                                 </div>
                             </div>
                         </fieldset>
+                        
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-block btn-lg btn-danger">
+                            <button type="submit" class="btn btn-block btn-lg btn-danger" value="로그인" onclick="check();">
                                 <span class="small-circle"><i class="fa fa-caret-right"></i></span>
                                 <small>로그인</small>
                             </button>

@@ -40,12 +40,6 @@ public class MainController {
 		}
 		
 		
-		// 로그인된 유저의 수업 목록
-		List<HashMap<String, Object>> classInfoList = null;
-		classInfoList = classService.getClassInfoListOfUserNo(userVo.getUserNo());
-		model.addAttribute("classInfoList", classInfoList);
-		
-		
 		return "main/main";
 	}
 	@RequestMapping("/")
@@ -102,7 +96,7 @@ public class MainController {
 		}
 		Map<String, Object> retMap = new HashMap<String, Object>();
 		retMap.put("result","success");
-		return "redirect:/main";
+		return "redirect:/index";
 	}
 	
 	@RequestMapping("/logout")
