@@ -26,7 +26,7 @@ public class MainController {
 	@Autowired
 	ClassService classService;
 	
-	@RequestMapping("/main")
+	/*@RequestMapping("/main")
 	public String main(
 			HttpSession session,
 			Model model) {
@@ -41,7 +41,7 @@ public class MainController {
 		
 		
 		return "main/main";
-	}
+	}*/
 	@RequestMapping("/")
 	public String empty() {
 		return "redirect:main";
@@ -104,7 +104,7 @@ public class MainController {
 	public String logoutWeb( HttpSession session ) {
 		session.removeAttribute( "authUser" );
 		session.invalidate();
-		return "redirect:/intro";
+		return "redirect:/index";
 	}
 	
 	

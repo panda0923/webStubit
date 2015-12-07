@@ -28,26 +28,35 @@
 				<div class="navbar">
 					<div class="logo pull-left">
 						<h4>
-							<a href="/bitin/main/index"> <strong>testing</strong></a> <small>StuBit</small>
+							<a href="/bitin/index"> <strong>testing</strong></a> <small>StuBit</small>
 						</h4>
 					</div>
-					<!--  
-					<ul class="nav navbar-nav pull-right navbar-menu hidden-xs">
-						<li class="active"><a href="/jblog/user/loginform"> 로그인 </a>
-						</li>
-						<li><a href="#about"> 메뉴 </a></li>
-					</ul>
-					-->
-
-					<ul class="navbar-buttons pull-right">
-						<li><a href="/bitin/registerform"
-							class="btn btn-sm btn-transparent"> 회원가입 </a></li>
-					</ul>
-					<ul class="navbar-buttons pull-right">
-						<li><a href="/bitin/loginform"
-							class="btn btn-sm btn-transparent"> 로그인 </a></li>
-					</ul>
-
+					<c:choose>
+					<c:when test='${empty authUser }'>
+						<ul class="navbar-buttons pull-right">
+							<li><a href="/bitin/registerform"
+								class="btn btn-sm btn-transparent"> 회원가입 </a></li>
+						</ul>
+						<ul class="navbar-buttons pull-right">
+							<li><a href="/bitin/loginform"
+								class="btn btn-sm btn-transparent"> 로그인 </a></li>
+						</ul>
+						</c:when>
+						<c:otherwise>
+						<ul class="navbar-buttons pull-right">
+							<li><a href="/bitin/registerform"
+								class="btn btn-sm btn-transparent"> 개인정보 수정</a></li>
+						</ul>
+						<ul class="navbar-buttons pull-right">
+							<li><a href="/bitin/logout"
+								class="btn btn-sm btn-transparent"> 로그아웃</a></li>
+						</ul>
+						<ul class="navbar-buttons pull-right">
+							<h4>${authUser.userName }<small> 님 접속중</small></h4>
+						</ul>
+						
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</header>
 			<div class="content">
@@ -56,57 +65,33 @@
 					<ol class="carousel-indicators">
 						<li data-target="#carousel-landing" data-slide-to="0"
 							class="active"></li>
-						<li data-target="#carousel-landing" data-slide-to="1" class=""></li>
 					</ol>
 					<div class="carousel-inner">
-						<div class="item active">
-							<div class="row">
-								<div class="col-xs-6">
-									<div class="animated fadeInLeftBig">
-										<h1 class="slide-one-header">
-											<strong></strong> <br>Dashboard Template
-										</h1>
-										<p class="lead hidden-xs">
-											문구<strong></strong> 지정 필요
-										</p>
-										<p>
-											<a href="/jblog/main/index" class="btn btn-lg btn-white">
-												GO! &nbsp; <i class="fa fa-angle-right"></i>
-											</a>
-										</p>
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<div class="text-align-center animated fadeInRightBig">
-										<img src="/jblog/assets/images/test2.png" alt="Second slide">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="row">
-								<div class="col-xs-6">
-									<div class="animated fadeInLeft">
-										<h1 class="slide-three-header">
-											<strong>Application</strong> <br>Download
-										</h1>
-										<p>
-											<a
-												href="http://www.responsinator.com/?url=demo.flatlogic.com%2F3.0"
-												class="btn btn-white btn-lg" target="_blank"> Test It </a>
-										</p>
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<p class="animated fadeInUp" style="margin-top: 130px">
-										<!--   									
-										<img src="/jblog/assets/images/test1.png" alt="" />
-										-->
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
+                            <div class="item active">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="animated fadeInLeftBig">
+                                            <h1 class="slide-one-header"><strong>StuBit </strong>for Mobile <br>Android App</h1>
+                                            <p class="lead hidden-xs">
+                                                간단한 서비스 제공
+                                            </p>
+                                            <p>
+                                                <a href="404"
+                                                   class="btn btn-lg btn-transparent">
+                                                    download &nbsp; <i class="fa fa-shopping-cart"></i>
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="text-align-center animated fadeInRightBig">
+                                            <img src="/bitin/assets/img/test.png" alt="Second slide">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+					
 					<a class="left carousel-control carousel-control-landing"
 						href="#carousel-landing" data-slide="prev"> <span
 						class="icon-prev"></span>

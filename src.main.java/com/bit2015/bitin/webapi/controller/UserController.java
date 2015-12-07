@@ -50,42 +50,42 @@ public class UserController {
 	 * @param userVo
 	 * @return
 	 */
-	@RequestMapping("/login-web")
-	public String loginWeb( 
-			HttpSession session,
-			@ModelAttribute UserVo userVo ) {
-		System.out.println("@UserController login-web userVo : "+userVo);
-		if( userVo== null){
-			System.out.println("@UserController ERROR : userVo==null");
-		}
-		else if(userVo.getUserId()==null || userVo.getUserPassword()==null){
-			System.out.println("@UserController ERROR : userVo.name or userVo.password ==null");
-		}
-		else{
-			UserVo retUserVo = userService.getUserVoViaIdAndPassword(userVo);
-			if( retUserVo == null ) {
-				//로그인실패 - 어차피 modal ajax에서 미리 check 해서 실패 case없음
-			}
-			else{
-				session.setAttribute("authUser", retUserVo);
-			}
-		}
-		Map<String, Object> retMap = new HashMap<String, Object>();
-		retMap.put("result","success");
-		return "main/main";
-	}
+//	@RequestMapping("/login-web")
+//	public String loginWeb( 
+//			HttpSession session,
+//			@ModelAttribute UserVo userVo ) {
+//		System.out.println("@UserController login-web userVo : "+userVo);
+//		if( userVo== null){
+//			System.out.println("@UserController ERROR : userVo==null");
+//		}
+//		else if(userVo.getUserId()==null || userVo.getUserPassword()==null){
+//			System.out.println("@UserController ERROR : userVo.name or userVo.password ==null");
+//		}
+//		else{
+//			UserVo retUserVo = userService.getUserVoViaIdAndPassword(userVo);
+//			if( retUserVo == null ) {
+//				//로그인실패 - 어차피 modal ajax에서 미리 check 해서 실패 case없음
+//			}
+//			else{
+//				session.setAttribute("authUser", retUserVo);
+//			}
+//		}
+//		Map<String, Object> retMap = new HashMap<String, Object>();
+//		retMap.put("result","success");
+//		return "main/main";
+//	}
 	
 
 	/************************************************web에서 아마 사용될것.(bitin에서는 사용됨) 지금은 사용안됨.
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping("/logout-web")
-	public String logoutWeb( HttpSession session ) {
-		session.removeAttribute( "authUser" );
-		session.invalidate();
-		return "main/main";
-	}
+//	@RequestMapping("/logout-web")
+//	public String logoutWeb( HttpSession session ) {
+//		session.removeAttribute( "authUser" );
+//		session.invalidate();
+//		return "main/main";
+//	}
 	
 	/************************************************web에서 아마 사용될것.(bitin에서는 사용됨) 지금은 사용안됨.
 	 * 아이디,비밀번호 일치 여부 확인해줌

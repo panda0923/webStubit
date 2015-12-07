@@ -19,23 +19,23 @@ public class UserController {
 	UserService userService;
 	
 	
-	@ResponseBody
-	@RequestMapping("/login")
-	public String login( 
-			HttpSession session,
-			@ModelAttribute UserVo userVo ){
-		System.out.println("@UserController userVo : "+userVo);
-		UserVo retUserVo = userService.getUserVoViaIdAndPassword(userVo);
-		if( retUserVo == null ) {
-			
-		}
-		if( userService.checkIdAndPassword(userVo) ){
-			System.out.println("true");
-		}else {
-			System.out.println("false");
-		}
-		return "HO";
-	}
-	
+//	@ResponseBody
+//	@RequestMapping("/login")
+//	public String login( 
+//			HttpSession session,
+//			@ModelAttribute UserVo userVo ){
+//		System.out.println("@UserController userVo : "+userVo);
+//		UserVo retUserVo = userService.getUserVoViaIdAndPassword(userVo);
+//		if( retUserVo == null ) {
+//			
+//		}
+//		if( userService.checkIdAndPassword(userVo) ){
+//			System.out.println("true");
+//		}else {
+//			System.out.println("false");
+//		}
+//		return "HO";
+//	}
+//	
 	
 }
