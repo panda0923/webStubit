@@ -215,9 +215,15 @@ public class UserController {
 
 	
 	
+	/******* TEST 안됨
+	 * @param userId
+	 * @return userId가 들어가 있는 수업의 목록
+	 * List<String >    형태로 
+	 */
 	@ResponseBody
 	@RequestMapping("/classname-by-teacherid")
-	public Map<String, Object> getClassNameByTeacherId( @RequestParam(value = "userId", required=false)String userId	) {
+	public Map<String, Object> getClassNameByTeacherId(
+			@RequestParam(value = "userId", required=false)String userId	) {
 		HashMap<String, Object> retMap = new HashMap<String, Object>();
 		
 		
@@ -235,4 +241,9 @@ public class UserController {
 		
 		return retMap;
 	}
+	
+	
+	
+	
+	
 }

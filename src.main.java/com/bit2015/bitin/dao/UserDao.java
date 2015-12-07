@@ -102,10 +102,18 @@ public class UserDao {
 	}
 	
 	
+	/************* TEST 완료 
+	 * @param userId
+	 * @return userId가 들어가 있는 수업의 목록
+	 * List<String >    형태로 
+	 */
 	public List<String>  getClassNameListByTeacherId (String userId) {
 		List<String> retList = null;
 		//TODO : retList 뽑아오는 과정
 		retList = sqlSession.selectList("user.getClassNameListByTeacherId", userId);
 		return retList;
 	}
+	
+	
+	
 }
