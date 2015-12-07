@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+
+
+<mapper namespace="attd">
+	<insert id="insertAttdNumberVo" parameterType="AttdNumberVo">
+		INSERT INTO B_ATTD_NUMBER
+		VALUES ( SYSDATE,
+				 #{randomNumber},
+				 #{classNo } )
+	</insert>
+	
+	<insert id="insertStartAttd" parameterType="AttendanceVo">
+		INSERT INTO b_attendance
+		VALUES( #{userNo},
+				#{classNo},
+				SYSDATE,
+				'출석중',
+				'-')
+	</insert>
+	
+	<update id="updateEndAtttdViaClassNo" parameterType="long">
+		UPDATE b_attendance
+		   SET attd_status= '결석'
+		WHERE class_no = #{classNo }  
+		  AND attd_status = '출석중'
+	</update>
+</mapper>

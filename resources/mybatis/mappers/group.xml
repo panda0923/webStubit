@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+
+
+<mapper namespace="group">
+	<insert id="insert" parameterType="UserVo">
+		<![CDATA[
+			INSERT INTO b_group 
+			VALUES (B_GROUP_SEQ.nextval,
+					#{groupName },
+					#{groupType}  )
+		]]>
+	</insert>
+
+	<insert id="joinGroup" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO b_group_user
+			VALUES	(#{userNo },
+					 #{groupNo },
+					 #{role } )
+		]]>
+	</insert>
+</mapper>
