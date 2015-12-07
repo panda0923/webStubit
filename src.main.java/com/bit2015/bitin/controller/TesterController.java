@@ -13,6 +13,7 @@ import com.bit2015.bitin.api.thread.AttdThread;
 import com.bit2015.bitin.api.thread.EndAttd;
 import com.bit2015.bitin.service.AttdService;
 import com.bit2015.bitin.service.ClassService;
+import com.bit2015.bitin.service.UserService;
 import com.bit2015.bitin.service.UtilService;
 import com.bit2015.bitin.vo.AttdNumberVo;
 import com.bit2015.bitin.vo.AttendanceVo;
@@ -29,19 +30,20 @@ public class TesterController {
 	UtilService util;
 	@Autowired
 	ClassService classService;
+	
+	@Autowired
+	UserService userService;
+	
+	
 	/**
 	 * 그냥test 용도
 	 */
 	@ResponseBody
 	@RequestMapping("/main")
 	public String TesterMain( ) {
-		System.out.println("HO      4                 ");
-		EndAttd endAttd = new EndAttd();
-		
-		Timer timer = new Timer();
-
-		endAttd.setClassNo(3L);
-		timer.schedule(endAttd, 2000L);
+		  
+		System.out.println("test!!!!!!");
+		System.out.println( userService.getClassNameListByTeacherId("lsl") );
 		
 /////////////////////////////////////////////////////////
 //		Test 하고 남은 코드들

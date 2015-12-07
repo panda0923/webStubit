@@ -101,4 +101,11 @@ public class UserDao {
 		return retList;
 	}
 	
+	
+	public List<String>  getClassNameListByTeacherId (String userId) {
+		List<String> retList = null;
+		//TODO : retList 뽑아오는 과정
+		retList = sqlSession.selectList("user.getClassNameListByTeacherId", userId);
+		return retList;
+	}
 }

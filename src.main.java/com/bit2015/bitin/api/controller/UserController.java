@@ -213,4 +213,26 @@ public class UserController {
 	}
 	
 
+	
+	
+	@ResponseBody
+	@RequestMapping("/classname-by-teacherid")
+	public Map<String, Object> getClassNameByTeacherId( @RequestParam(value = "userId", required=false)String userId	) {
+		HashMap<String, Object> retMap = new HashMap<String, Object>();
+		
+		
+		List<String> retList = userService.getClassNameListByTeacherId(userId);
+		
+		
+		retMap.put("result", "success");
+		retMap.put("data", retList);
+		
+		
+		/*if( 문제){
+			retMap.put("result", "fail");
+			retMap.put("message", "실패이유");
+		}*/
+		
+		return retMap;
+	}
 }
