@@ -26,7 +26,7 @@ public class MainController {
 	@Autowired
 	ClassService classService;
 	
-	/*@RequestMapping("/main")
+	@RequestMapping("/main")
 	public String main(
 			HttpSession session,
 			Model model) {
@@ -41,7 +41,7 @@ public class MainController {
 		
 		
 		return "main/main";
-	}*/
+	}
 	@RequestMapping("/")
 	public String empty() {
 		return "redirect:main";
@@ -75,37 +75,7 @@ public class MainController {
 	}
 	   
 	   
-	@RequestMapping("/login")
-	public String loginWeb( 
-			HttpSession session,
-			@ModelAttribute UserVo userVo ) {
-		if( userVo== null){
-			System.out.println("@UserController ERROR : userVo==null");
-		}
-		else if(userVo.getUserId()==null || userVo.getUserPassword()==null){
-			System.out.println("@UserController ERROR : userVo.name or userVo.password ==null");
-		}
-		else{
-			UserVo retUserVo = userService.getUserVoViaIdAndPassword(userVo);
-			if( retUserVo == null ) {
-				return "redirect:/loginform";
-				//로그인실패 - 어차피 modal ajax에서 미리 check 해서 실패 case없음
-			}
-			else{
-				session.setAttribute("authUser", retUserVo);
-			}
-		}
-		Map<String, Object> retMap = new HashMap<String, Object>();
-		retMap.put("result","success");
-		return "redirect:/index";
-	}
-	
-	@RequestMapping("/logout")
-	public String logoutWeb( HttpSession session ) {
-		session.removeAttribute( "authUser" );
-		session.invalidate();
-		return "redirect:/index";
-	}
+
 	
 	
 	//TODO : attd  table 만들기
