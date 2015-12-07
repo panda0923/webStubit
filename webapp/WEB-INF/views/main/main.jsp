@@ -25,42 +25,21 @@
 
 
 function check() { 
-	if ($("input#input-id").val() == "") {
+	if ($("input#id").val() == "") {
 		alert("id를 입력해주세요");
 		$("input#input-id").focus();
 		event.preventDefault();
 	}
-	else if ($("input#input-pwd").val() == "") {
+	else if ($("input#password").val() == "") {
 		alert("비밀번호를 입력해주세요");
-		$("input#input-pwd").focus();
+		$("input#p").focus();
 		event.preventDefault();
-	}
-	else{
-		event.preventDefault();
-		$.ajax({
-			async:false,			// 이거 안하면  event.preventDefault() 가 안먹힘. thread따로 돌리면서 else바깥 부분이 오히려 먼저 시작되어버림
-			url:"/bitin/api/user/test",
-			type: "get",
-			dataType: "json",
-			data: "userId="+$("input#input-id").val()+"&userPassword="+$("input#input-pwd").val(),
-			contentType: "application/json",
-			success: function(response){		//보통 data보다는 response라고 쓰는게 맞음
-				console.log( response );	
-				if(response.result == "fail"){	//로그인 실패
-					alert(response.message);
-					event.preventDefault();
-				}
-				else{	//로그인 성공 
-				}
-			},
-			error: function( jqXHR, status, e ){	//통신오류
-				event.preventDefault();
-				alert( "ajax error[ status : "+status + " // error : " + e +"]");
-			}
-		})
 	}
 }
 </script>
+
+
+
 </head>
 <body>
 	<div class="container">
