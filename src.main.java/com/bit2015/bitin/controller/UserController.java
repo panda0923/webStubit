@@ -1,5 +1,8 @@
 package com.bit2015.bitin.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,22 +22,36 @@ public class UserController {
 	UserService userService;
 	
 	
-	@ResponseBody
 	@RequestMapping("/login")
-	public String login( 
+	public String loginWeb( 
 			HttpSession session,
-			@ModelAttribute UserVo userVo ){
-		System.out.println("@UserController userVo : "+userVo);
-		UserVo retUserVo = userService.getUserVoViaIdAndPassword(userVo);
-		if( retUserVo == null ) {
-			
+			@ModelAttribute UserVo userVo ) {
+		if( userVo== null){
+			System.out.println("@UserController ERROR : userVo==null");
 		}
-		if( userService.checkIdAndPassword(userVo) ){
-			System.out.println("true");
-		}else {
-			System.out.println("false");
+		else if(userVo.getUserId()==null || userVo.getUserPassword()==null){
+			System.out.println("@UserController ERROR : userVo.name or userVo.password ==null");
 		}
-		return "HO";
+		else{
+			UserVo retUserVo = userService.getUserVoViaIdAndPassword(userVo);
+			if( retUserVo == null ) {
+				return "redirect:/loginform";
+				//로그인실패 - 어차피 modal ajax에서 미리 check 해서 실패 case없음
+			}
+			else{
+				session.setAttribute("authUser", retUserVo);
+			}
+		}
+		Map<String, Object> retMap = new HashMap<String, Object>();
+		retMap.put("result","success");
+		return "redirect:/index";
+	}
+	
+	@RequestMapping("/logout")
+	public String logoutWeb( HttpSession session ) {
+		session.removeAttribute( "authUser" );
+		session.invalidate();
+		return "redirect:/intro";
 	}
 	
 	
