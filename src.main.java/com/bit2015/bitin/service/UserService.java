@@ -114,6 +114,18 @@ public class UserService {
 	}  
 	// 주어진 라디언(radian) 값을 도(degree) 값으로 변환  
 	private double rad2deg(double rad){  
-	    return (double)(rad * (double)180d / Math.PI);  
+	    return (double)(rad * (double)180d / Math.PI);
+	    
+	}
+	
+	/**
+	 * @param userId
+	 * @return
+	 */
+	public List<String>  getClassNameListByTeacherId (String userId) {
+		List<String> retList = null;
+		//TODO : retList 뽑아오는 과정
+		retList = userDao.getClassNameListByTeacherId(userId);
+		return retList;
 	}
 }

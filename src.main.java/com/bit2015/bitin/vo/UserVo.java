@@ -16,14 +16,18 @@ public class UserVo {
 	public String getUserId() {		return userId;	}
 	public String getUserPassword() {		return userPassword;	}
 	public String getUserPhoneId() {		return userPhoneId;	}
-	public String getuserType() {		return userType;	}
 
+	public String getUserType() {
+		return userType;
+	}
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
 	public void setUserNo(Long userNo) {		this.userNo = userNo;	}
 	public void setUserName(String userName) {		this.userName = userName;	}
 	public void setUserId(String userId) {		this.userId = userId;	}
 	public void setUserPassword(String userPassword) {		this.userPassword = userPassword;	}
 	public void setUserPhoneId(String userPhoneId) {		this.userPhoneId = userPhoneId;	}
-	public void setuserType(String userType) {		this.userType = userType;	}
 
 	@Override
 	public String toString() {
