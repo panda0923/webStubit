@@ -40,11 +40,7 @@ public class MainController {
 		}
 		
 		
-		// 로그인된 유저의 수업 목록
-		List<HashMap<String, Object>> classInfoList = null;
-		classInfoList = classService.getClassInfoListOfUserNo(userVo.getUserNo());
-		model.addAttribute("classInfoList", classInfoList);
-		
+
 		
 		return "main/main";
 	}
@@ -81,36 +77,7 @@ public class MainController {
 	}
 	   
 	   
-	@RequestMapping("/login")
-	public String loginWeb( 
-			HttpSession session,
-			@ModelAttribute UserVo userVo ) {
-		if( userVo== null){
-			System.out.println("@UserController ERROR : userVo==null");
-		}
-		else if(userVo.getUserId()==null || userVo.getUserPassword()==null){
-			System.out.println("@UserController ERROR : userVo.name or userVo.password ==null");
-		}
-		else{
-			UserVo retUserVo = userService.getUserVoViaIdAndPassword(userVo);
-			if( retUserVo == null ) {
-				//로그인실패 - 어차피 modal ajax에서 미리 check 해서 실패 case없음
-			}
-			else{
-				session.setAttribute("authUser", retUserVo);
-			}
-		}
-		Map<String, Object> retMap = new HashMap<String, Object>();
-		retMap.put("result","success");
-		return "redirect:/main";
-	}
-	
-	@RequestMapping("/logout")
-	public String logoutWeb( HttpSession session ) {
-		session.removeAttribute( "authUser" );
-		session.invalidate();
-		return "redirect:/intro";
-	}
+
 	
 	
 	//TODO : attd  table 만들기
@@ -141,4 +108,20 @@ public class MainController {
 	 * 
 	 */
 
+
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
 }
