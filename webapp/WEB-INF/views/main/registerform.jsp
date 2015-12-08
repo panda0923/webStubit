@@ -173,7 +173,7 @@ function idChanged() {
 								<div class="row">
 									<div class="col-sm-8 col-sm-offset-4">
 										<button type="submit" class="btn btn-primary" onclick="checkEmpty();">확 인</button>
-										<button type="button" class="btn btn-default">취 소</button>
+										<a href="/bitin/index"><button  type="button" class="btn btn-default"  >취 소</button></a>
 									</div>
 								</div>
 							</div>
