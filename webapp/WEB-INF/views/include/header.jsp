@@ -1,101 +1,199 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-<div id="header" class="row">
-	<div class="jumbotron text-right">
-		<c:choose>
-			<c:when test='${empty authUser }'>
-				<a href="#" class="btn btn-default btn-xs" >
-					가입하기 <span class="glyphicon glyphicon-user"></span></a>
-				 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#login-form">로그인!!</button>
-			</c:when>
-			
-			<c:otherwise>
-				<a href="#" class="btn btn-link btn-sm">
-					 정보수정 <span class="glyphicon glyphicon-edit"></span></a>
-				<a href="/bitin/logout" class="btn btn-success btn-sm">
-					로그아웃 <span class="glyphicon glyphicon-log-out"></span></a>
-			</c:otherwise>
-		</c:choose>
-		<a href="#" class="btn btn-info btn-md">Test</a>
-		<h1>StudyIn</h1>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	
+	<header class="page-header">
+            <div class="navbar">
+                <ul class="nav navbar-nav navbar-right pull-right">
+                    <li class="visible-phone-landscape">
+                        <a href="#" id="search-toggle">
+                            <i class="fa fa-search"></i>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" title="Messages" id="messages"
+                           class="dropdown-toggle"
+                           data-toggle="dropdown">
+                            <i class="fa fa-comments"></i>
+                        </a>
+                        <ul id="messages-menu" class="dropdown-menu messages" role="menu">
+                            <li role="presentation">
+                                <a href="#" class="message">
+                                    <img src="img/1.jpg" alt="">
+                                    <div class="details">
+                                        <div class="sender">Jane Hew</div>
+                                        <div class="text">
+                                            Hey, John! How is it going? ...
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="message">
+                                    <img src="img/2.jpg" alt="">
+                                    <div class="details">
+                                        <div class="sender">Alies Rumiancaŭ</div>
+                                        <div class="text">
+                                            I'll definitely buy this template
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="message">
+                                    <img src="img/3.jpg" alt="">
+                                    <div class="details">
+                                        <div class="sender">Michał Rumiancaŭ</div>
+                                        <div class="text">
+                                            Is it really Lore ipsum? Lore ...
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="text-align-center see-all">
+                                    See all messages <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" title="8 support tickets"
+                           class="dropdown-toggle"
+                           data-toggle="dropdown">
+                            <i class="fa fa-group"></i>
+                            <span class="count">8</span>
+                        </a>
+                        <ul id="support-menu" class="dropdown-menu support" role="menu">
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-important"><i class="fa fa-bell-o"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        Check out this awesome ticket
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-warning"><i class="fa fa-question-circle"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        "What is the best way to get ...
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-success"><i class="fa fa-tag"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        This is just a simple notification
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-info"><i class="fa fa-info-circle"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        12 new orders has arrived today
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-important"><i class="fa fa-plus"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        One more thing that just happened
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="text-align-center see-all">
+                                    See all tickets <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="hidden-xs">
+                        <a href="#" id="settings"
+                           title="Settings"
+                           data-toggle="popover"
+                           data-placement="bottom">
+                            <i class="fa fa-cog"></i>
+                        </a>
+                    </li>
+                    <li class="hidden-xs dropdown">
+                        <a href="#" title="Account" id="account"
+                           class="dropdown-toggle"
+                           data-toggle="dropdown">
+                            <i class="fa fa-user"></i>
+                        </a>
+                        <ul id="account-menu" class="dropdown-menu account" role="menu">
+                            <li role="presentation" class="account-picture">
+                                <img src="img/2.jpg" alt="">
+                                Philip Daineka
+                            </li>
+                            <li role="presentation">
+                                <a href="form_account.html" class="link">
+                                    <i class="fa fa-user"></i>
+                                    Profile
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="component_calendar.html" class="link">
+                                    <i class="fa fa-calendar"></i>
+                                    Calendar
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="link">
+                                    <i class="fa fa-inbox"></i>
+                                    Inbox
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="visible-xs">
+                        <a href="#"
+                           class="btn-navbar"
+                           data-toggle="collapse"
+                           data-target=".sidebar"
+                           title="">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </li>
+                    <li class="hidden-xs"><a href="login.html"><i class="fa fa-sign-out"></i></a></li>
+                </ul>
+                <form id="search-form" class="navbar-form pull-right" role="search">
+                    <input type="search" class="form-control search-query" placeholder="Search...">
+                </form>
+            </div>
+        </header>	
 		
-		<ul class="nav nav-pills">
-			<li class="dropdown active">
-				<a class="droptown-toggle" data-toggle="dropdown" href="#">HOME<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li class="active"><a href="#">HOME</a></li>
-					<li><a href="#">Submenu1-1</a></li>
-					<li><a href="#">Submenu1-2</a></li>
-					<li><a href="#">Submenu1-3</a></li>
-				</ul></li>
-			<li class="dropdown">
-				<a class="droptown-toggle" data-toggle="dropdown" href="#">수업목록<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<c:forEach items='${classInfoList }' var='classVo'>
-						<li><a href="/bitin/classinfo?classNo=${classVo.CLASSNO }">${classVo.CLASSNAME}</a></li>
-					</c:forEach>
-				</ul></li>
-			<li class="dropdown">
-				<a class="droptown-toggle" data-toggle="dropdown" href="#">Submenu<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><a href="#">Submenu 2-1</a></li>
-					<li><a href="#">Submenu 2-2</a></li>
-					<li><a href="#">Submenu 2-3</a></li>
-					<li><a href="#">Submenu 2-4</a></li>
-				</ul></li>
-			<li><a href="#">Menu 4 </a></li>
-		</ul>
 		
-	</div>
-</div>
-
-<!--로그인 modal 시작 --------------------------------------------------------->
-<div class="modal fade" id="login-form" role="dialog">
-	<div class="modal-dialog">
-
-		<!-- Modal content-->
-		<div class="modal-content">
-		
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-hidden="false">&times;</button>
-				<h2 class="modal-title text-center ">Log in</h2>
-			</div>
-
-			<div class="modal-body">
-				<form action="/bitin/login">
-					<div class="form-group">
-						<label for="input-id">Id</label> <input class="form-control"
-							type="text" id="input-id" name="userId" placeholder="아이디 입력" />
-					</div>
-					<div class="form-group">
-						<label for="input-pwd">Password</label> <input
-							class="form-control" type="password" id="input-pwd"
-							name="userPassword" placeholder="비밀번호 입력" />
-					</div>
-
-					<div class="checkbox">
-						<label> <input type="checkbox" />아이디 비밀번호 저장!
-						</label>
-					</div>
-
-					<ul class="help list-unstyled list-inline">
-						<li><a href="{getUrl('http://www.naver.com','dispMemberSignUpForm')}">회원가입</a></li>
-						<li><a href="http://www.naver.com">ID/PW 찾기3</a></li>
-					</ul>
-
-					<button type="submit" class="btn btn-primary" onclick="check();">전송!!!</button>
-					<button type="reset" class="btn btn-warning">취소!!!</button>
-				</form>
-			</div>
-
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-	</div>
-</div>
-<!--- 로그인 모달 끝--------------------------------------------------------->
+		<%-- <div id="header">
+			<h1>MySite</h1>
+			<ul>
+				<c:choose>
+					<c:when test='${empty authUser }'>
+						<li><a href="/mysite3/user/loginform">로그인</a></li>
+						<li><a href="/mysite3/user/joinform">회원가입</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="/mysite3/user/modifyform">회원정보수정</a></li>
+						<li><a href="/mysite3/user/logout">로그아웃</a></li>
+						<li>${authUser.name }님 안녕하세요 ^^;</li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
+		</div> --%>

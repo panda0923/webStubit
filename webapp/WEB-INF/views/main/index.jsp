@@ -15,10 +15,6 @@
 <meta name="author" content="">
 <meta charset="utf-8">
 <script>
-	/* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
-	   chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
-	              https://code.google.com/p/chromium/issues/detail?id=332189
-	 */
 </script>
 </head>
 <body class="background-dark">
@@ -28,9 +24,10 @@
 				<div class="navbar">
 					<div class="logo pull-left">
 						<h4>
-							<a href="/bitin/index"> <strong>testing</strong></a> <small>StuBit</small>
+							<a href="/bitin/index"> <strong>StuBit</strong></a> <small>test</small>
 						</h4>
 					</div>
+					<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 					<c:choose>
 					<c:when test='${empty authUser }'>
 						<ul class="navbar-buttons pull-right">
