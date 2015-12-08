@@ -14,7 +14,8 @@
 					#{userName },
 					#{userPassword },
 					#{userPhoneId },
-					#{userType }		)
+					#{userType },
+					'-'		)
 		]]>
 	</insert>	
 	

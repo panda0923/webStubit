@@ -11,10 +11,10 @@ import com.bit2015.bitin.vo.UserVo;
 
 @Service
 public class UserService {
+	
+	
 	@Autowired
 	UserDao userDao;
-	
-	
 	
 	/**
 	 * @param userVo (id, name, password 필수 ) (phoneId 필수아님)

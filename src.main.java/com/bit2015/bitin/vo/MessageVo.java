@@ -2,10 +2,13 @@ package com.bit2015.bitin.vo;
 
 public class MessageVo {
 
-	int fromUserNo;
-	int toUserNo;
-	String createdDate;
-	String message;
+	
+	private int toUserNo;
+	private String createdDate;
+	private String message;
+	private int fromUserNo;
+	
+
 	public int getFromUserNo() {
 		return fromUserNo;
 	}

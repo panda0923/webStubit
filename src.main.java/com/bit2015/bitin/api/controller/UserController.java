@@ -35,20 +35,27 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value="/join")
 	public Map<String, Object> join(
-			@RequestBody UserVo userVo ) {
+			@RequestBody HashMap<String, Object> map ) {
 		HashMap<String, Object>retMap = new HashMap<String, Object>();
+		System.out.println("control - join  : map : "+map);
 		String resultStr = "fail";
 		
-		if( userVo == null){
+		if( map == null){
 			retMap.put("message", "userVo == null 상태임");
 		}
-		else if( (userVo.getUserName() ==null) || 
-				 (userVo.getUserId()==null) || 
-				 (userVo.getUserPassword()==null) ){
+		else if( (map.get("userName") ==null) || 
+				 (map.get("userId") ==null) || 
+				 (map.get("userPassword")==null) ){
 			retMap.put("message", "userVo에 입력되지 않은 값이 있음.");
 		}
 		else{
-			if( userService.checkExistUserViaId(userVo.getUserId()) ){
+			UserVo userVo = new UserVo();
+			userVo.setUserName(		(String)map.get("userName")		);
+			userVo.setUserId(		(String)map.get("userId")		);
+			userVo.setUserPassword(	(String)map.get("userPassword")	);
+			userVo.setUserPhoneId(  (String)map.get("phoneId")      );
+			userVo.setUserType(     (String)map.get("userType")     );
+			if( userService.checkExistUserViaId((String)map.get("userId") ) ){
 				retMap.put("message", "id 중복됨");
 			}
 			else if (userService.insertUser(userVo) ){
@@ -115,6 +122,43 @@ public class UserController {
 		return retMap;
 	}
 	
+	
+	/**
+	 * @param userVo (id, password 필수) 
+	 * @return 
+	 * 성공시 result:success,user_type
+	 * 실패시 result:fail / message:이유
+	 * 윤주요청 (이제그냥"/login"은 필요없다고함)
+	 * made by 현준
+	 */
+	@ResponseBody
+	@RequestMapping(value="/loginwithusertype")
+	public Map<String, Object> loginWithUserType(
+			@RequestBody UserVo userVo ){
+		System.out.println("@userAPIController login : userVo : "+userVo);
+		HashMap<String, Object>retMap = new HashMap<String, Object>();
+		String resString ="fail";
+
+		boolean loginFlag;
+		
+		if(userVo== null || userVo.getUserId()==null || userVo.getUserPassword()==null){
+			retMap.put("message", "id, password 모두 입력하세요");
+		}
+		else{
+			loginFlag = userService.checkIdAndPassword(userVo);
+			if ( loginFlag ==false){
+				retMap.put("message", "아이디 비밀번호 오류");
+			}
+			else{
+				resString= "success";
+				UserVo userVo2 = userService.getUserVoViaIdAndPassword(userVo);
+				retMap.put("data", userVo2.getUserType());
+			}
+		}
+		retMap.put("result", resString);
+		return retMap;
+		
+	}
 	
 /*	@ResponseBody
 	@RequestMapping("/userlist")
