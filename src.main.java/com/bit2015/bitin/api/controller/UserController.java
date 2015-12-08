@@ -211,10 +211,6 @@ public class UserController {
 		retMap.put("data", phoneIdList);
 		return retMap;
 	}
-	
-
-	
-	
 	/******* TEST 안됨
 	 * @param userId
 	 * @return userId가 들어가 있는 수업의 목록
@@ -223,9 +219,9 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping("/classname-by-teacherid")
 	public Map<String, Object> getClassNameByTeacherId(
-			@RequestParam(value = "userId", required=false)String userId	) {
+			@RequestBody HashMap<String, Object> map	) {
+		String userId = (String)map.get("userId");
 		HashMap<String, Object> retMap = new HashMap<String, Object>();
-		
 		
 		List<String> retList = userService.getClassNameListByTeacherId(userId);
 		
@@ -238,7 +234,7 @@ public class UserController {
 			retMap.put("result", "fail");
 			retMap.put("message", "실패이유");
 		}*/
-		
+		System.out.println("control - classnamelist : retMap : "+retMap);
 		return retMap;
 	}
 	

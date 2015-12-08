@@ -24,7 +24,7 @@ public class UserController {
 	@RequestMapping("/messagelist")
 	public Map<String, Object> messageList(
 			@RequestParam(value = "userId", required=false)String userId	) {
-		
+
 		HashMap<String, Object> retMap = new HashMap<String, Object>();
 		List<String> retList = messageService.getMessageList(userId);
 		

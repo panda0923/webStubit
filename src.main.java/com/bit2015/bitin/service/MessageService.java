@@ -3,10 +3,14 @@ package com.bit2015.bitin.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.bit2015.bitin.dao.MessageDao;
 import com.bit2015.bitin.dao.UserDao;
 
+
+
+@Service
 public class MessageService {
 
 	@Autowired
