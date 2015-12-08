@@ -1,0 +1,106 @@
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+INSERT INTO b_user 
+			VALUES (B_USER_SEQ.nextval,
+					'1',
+					'simpleGuy',
+					'123',
+					'null',
+					'student');
+
+INSERT INTO b_user 
+			VALUES (B_USER_SEQ.nextval,
+					'khj',
+					'김현준',
+					'123',
+					'null',
+					'student');
+
+/////////////////////////////////////////////////////////////////////////////////
+INSERT INTO b_group 
+			VALUES (B_GROUP_SEQ.nextval,
+					'KUYT',
+					'동아리'  );
+
+INSERT INTO B_GROUP_USER
+VALUES ( 10, 3, 'teacher');
+
+
+INSERT INTO B_GROUP_USER
+VALUES ( 8, 4, 'student');
+
+/////////////////////////////////////////////////////////////////////////////////	
+INSERT INTO B_CLASS
+VALUES (b_class_seq.nextval,
+		'4',
+		'전기회로',
+		'수업',
+		
+		'반도체실',
+		'-',
+		'-',
+		
+		'-',
+		'-',
+		
+		'-'
+		);
+
+INSERT INTO B_CLASS
+VALUES (b_class_seq.nextval,
+		#{groupNo },
+		#{className },
+		#{classType },
+		
+		#{coordName },
+		#{coordLati },
+		#{coordLongi},
+		
+		#{startTime },
+		#{endTime 	},
+		
+		#{classRef	}
+		);			
+
+
+
+INSERT INTO b_class
+		VALUES (b_class_seq.nextval,
+				1,
+				'일반화학',
+				'class',
+				
+				'-',
+				'-',
+				'-',
+				
+				'-',
+				'-',
+				
+				'-'
+				);
+/////////////////////////////////////////////////////////////////////////////////
+INSERT INTO b_class_user
+VALUES	('7',
+		 '6',
+		 'teacher');
+		 	
+/////////////////////////////////////////////////////////////////////////////////
+
+INSERT INTO b_q
+		VALUES (b_q_seq.nextval,
+				'10',
+				'7',
+				'When are we having dinner?',
+				SYSDATE,
+				'3',
+				'StuToTea',
+				' ');
+
+/////////////////////////////////////////////////////////////////////////////////
+INSERT INTO B_ATTD_NUMBER
+VALUES ( SYSDATE,
+		 #{randomNumber},
+		 #{classNo } )

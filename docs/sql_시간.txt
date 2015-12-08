@@ -1,0 +1,28 @@
+SELECT * FROM B_ATTENDANCE;
+
+
+
+SELECT sysdate from dual;
+
+SELECT to_char(SYSDATE,'yyyymmdd') from dual;
+SELECT to_char(SYSDATE,'mm/dd/yyyy hh:MM:ss') from dual;
+
+SELECT * from b_attendance;
+SELECT * from b_attendance
+WHERE class_date  between to_date('2015 12 07 11 15','YYYYMMDDHHmi') and to_date('2015 12 07 11 15','YYYYMMDDHHmi')+10/(24*60);
+--07일 11시 15분 부터     25분까지
+
+
+
+
+SELECT to_date('2015 12 07 11 ','YYYYMMDDHHmi') from dual;
+SELECT to_date('2015 12 07 11 ','YYYYMMDDHHmi')+10/(24*60) from dual;
+
+SELECT to_char(SYSDATE,'YYYYMMDDHH') from dual;
+SELECT to_date('2015 10 24 1 15','YYYYMMDDHHmi') from dual;
+SELECT to_date('20151024','YYYYMMDDHH')+1 from dual; --  +1 일
+SELECT to_date('20151024','YYYYMMDDHH')+1/24 from dual; --  +1 시간
+SELECT to_date('20151024','YYYYMMDDHH')+1/(24*60) from dual; --  +1분
+
+
+ 

@@ -59,6 +59,7 @@ public class UserController {
 	@RequestMapping("/join")
 	public String join( @ModelAttribute UserVo userVo) {
 		System.out.println(userVo);
+		
 		return "ha";
 	}
 }

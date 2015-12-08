@@ -1,0 +1,48 @@
+﻿----------------------------------------------------------
+----------------------------------------------------------
+SELECT  c.class_no,
+		c.class_name,
+		c.coord_name,
+		c.start_time,
+		c.end_time
+FROM B_CLASS c;
+----------------------------------------------------------
+SELECT class_no from b_class_user where user_no=7;
+----------------------------------------------------------
+SELECT  c.class_no,
+		c.class_name,
+		c.coord_name,
+		c.start_time,
+		c.end_time
+FROM B_CLASS c, (SELECT class_no 
+					   FROM b_class_user 
+					  WHERE user_no=7 )cNo
+WHERE c.CLASS_NO = cNo.class_no;
+----------------------------------------------------------
+SELECT  c.class_no		AS classNo,
+		c.class_name	AS className,
+		c.coord_name	AS coordName,
+		c.start_time	AS startTime,
+		c.end_time		AS endTime,
+		cu.USER_NO 		AS teacherNo,
+		u.USER_NAME 	AS teacherName
+FROM B_CLASS c, b_class_user cu, b_user u,(SELECT class_no 
+										     FROM b_class_user 
+										    WHERE user_no=7 )cNo
+WHERE c.CLASS_NO = cNo.class_no
+AND cu.CLASS_NO=c.class_no
+AND cu.CLASS_ROLE='teacher'
+AND cu.USER_NO = u.user_no;
+----------------------------------------------------------
+SELECT  c.class_no		AS classNo,
+		c.class_name	AS className,
+		c.coord_name	AS coordName,
+		c.start_time	AS startTime,
+		c.end_time		AS endTime,
+		cu.USER_NO 		AS teacherNo,
+		u.USER_NAME 	AS teacherName
+FROM B_CLASS c, b_class_user cu, b_user u
+WHERE c.CLASS_NO = 3
+  AND cu.CLASS_NO=c.class_no
+  AND cu.CLASS_ROLE='teacher'
+  AND cu.USER_NO = u.user_no;

@@ -239,5 +239,20 @@ public class ClassController {
 		
 			return retMap;
 		}
+		
+		@ResponseBody
+		@RequestMapping("/classattd-by-date")
+		public Map<String, Object> getClassAttdByDate( 
+				@RequestBody HashMap<String, Object> inputMap ) { //이거안되면 HashMap<> 대신 String 으로 해서 util 에 있는거 쓰기 
+			HashMap<String, Object> retMap = new HashMap<String, Object>();
+			String retString = "fail";
+			
+			Long classNo = (Long)inputMap.get("classNo");
+			//TODO : classService.getClassAttdByDate( classNo, attdDate ) ;
+			
+			
+			retMap.put("result", retString);
+			return retMap;
+		}
 
 }
