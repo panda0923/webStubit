@@ -27761,7 +27761,8 @@ table.table thead .sorting_desc_disabled {
 
 /* line 643, ../../src/sass/_widgets.scss */
 .carousel-landing {
-  height: 450px;
+  height: 350px;
+  /*수정했음*/
   overflow: hidden;
 }
 /* line 647, ../../src/sass/_widgets.scss */
@@ -28189,8 +28190,8 @@ table.table thead .sorting_desc_disabled {
 /* line 1017, ../../src/sass/_widgets.scss */
 .single-widget-container {
   left: 0;
-  top: 50%;
-  margin-top: -192.5px;
+  top: 10%;
+  margin-top: 0px;
   position: absolute;
   width: 100%;
 }
