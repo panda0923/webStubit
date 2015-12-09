@@ -27,7 +27,7 @@
 			   user_phone_id AS userPhoneId,
 			   user_type AS userType
 		FROM b_user
-		WHERE user_id = #{userId}
+		WHERE user_id = #{userId }
 	</select>
 	
 	<select id="getUserVoByIdAndPassword" parameterType="UserVo" resultType="UserVo">

@@ -52,6 +52,19 @@ public class ClassService {
 		return retMap;
 	}
 
+	/******** 송이 사용중
+	 * @param userNo
+	 * @return
+	 */
+	public List<ClassVo> getClassNameTimeListByUserNo(Long userNo ){
+		List<ClassVo> retList = null;
+		retList = classDao.getClassNameTimeListByUserNo(userNo);
+		return retList;
+	}
+	/************* 송이 사용중
+	 * @param userNo
+	 * @return
+	 */
 	public List<String> getClassNameListByUserNo ( Long userNo ) {
 		List<String> retList = null;
 		retList = classDao.getClassNameListByUserNo(userNo);

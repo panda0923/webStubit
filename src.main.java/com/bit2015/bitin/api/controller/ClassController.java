@@ -92,7 +92,7 @@ public class ClassController {
 		return retMap;
 	}
 	
-	/**
+	/********송이가 쓰는거 
 	 * @param userVo (userId 받아와야됨)
 	 * (Id가 고유한 아이디 아니면 error 남)
 	 * @return List<String> 으로    List<"groupName"> return 함 
@@ -107,13 +107,15 @@ public class ClassController {
 		
 		String userId = userVo.getUserId();
 		Long userNo = userService.getUserNoViaUserId(userId);
-		List<String> classNameList = classService.getClassNameListByUserNo(userNo);
+		List<ClassVo> classNameList = classService.getClassNameTimeListByUserNo(userNo);
 		
 		if(classNameList== null ){
 			retMap.put("message", "groupList==null이다.");
 		}else{
 			resString="success";
 			retMap.put("data", classNameList);
+		
+			
 		}
 		retMap.put("result", resString);
 		return retMap;

@@ -13,21 +13,48 @@
 					SYSDATE)
 			]]>
 	</insert>	
-	
 	<insert id="setVoteContent" parameterType="string">
 		<![CDATA[
 			INSERT INTO  b_vote_content
-			VALUES ('2',
+			VALUES (b_vote_seq.currval,
 					#{voteContent }
 					)
 			]]>
 	</insert>	
-<!-- 	select a.vote_number from b_vote_title a,B_VOTE_CONTENT b where a.vote_number = b.VOTE_NUMBER; -->
-
-
-
 	<select id="phoneIdListbyUserIdAndClassName" parameterType="hashmap" resultType="string" >
 		SELECT a.user_phone_id from b_user a,b_class b
 		 WHERE a.user_id = #{userId} and b.class_name = #{className}
+	</select>
+	
+	
+	
+	
+	
+	<select id="getVoteList" parameterType="string" resultType="VoteVo" >
+		SELECT  vote_title AS voteTitle, 
+				class_name AS className, 
+				created_date AS createdDate, 
+				vote_number AS voteNumber
+		  FROM  b_vote_title
+		 WHERE  user_id = #{userId}
 	</select>	
+	
+	
+	
+	
+	
+	
+	
+	<insert id="voting" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO b_vote_answer
+			VALUES (#{userNo },
+					#{voteNumber },
+					#{voteContent } )
+			]]>
+	</insert>	
+	
+	
+	
+	
 </mapper>

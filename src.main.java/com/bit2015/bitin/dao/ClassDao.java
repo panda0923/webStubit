@@ -74,7 +74,15 @@ public class ClassDao {
 		
 	}
 
-	
+	/******** 송이 사용중
+	 * @param userNo
+	 * @return
+	 */
+	public List<ClassVo> getClassNameTimeListByUserNo(Long userNo ){
+		List<ClassVo> retList = null;
+		retList = sqlSession.selectList("class.getClassNameTimeListByUserNo", userNo);
+		return retList;
+	}
 	/**
 	 * @param userId 
 	 * @return List(hashmap> 으로 

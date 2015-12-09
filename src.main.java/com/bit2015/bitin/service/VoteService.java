@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.bit2015.bitin.dao.VoteDao;
 import com.bit2015.bitin.vo.VoteVo;
@@ -18,13 +19,9 @@ public class VoteService {
 	VoteDao voteDao;
 	
 	
-	public boolean insertVoteTitle(  HashMap<String, Object> map) {
+	public boolean insertVoteTitleAndContent(  HashMap<String, Object> map) {
 		boolean retFlag = false;
 		retFlag = voteDao.insertVoteTitle(map);
-		return retFlag;
-	}
-	public boolean insertVoteContent(  HashMap<String, Object> map) {
-		boolean retFlag = false;
 		retFlag = voteDao.insertVoteContent(map);
 		return retFlag;
 	}
@@ -33,4 +30,24 @@ public class VoteService {
 		list = voteDao.phoneIdListbyUserIdAndClassName(map);
 		return list;
 	}
+	
+	
+	
+	public List<VoteVo> getVoteList(String userId){
+		List<VoteVo> list = null;
+		list = voteDao.getVoteList(userId);
+		return list;
+	}
+	
+	
+	public Map<String, Object> voting(  @RequestBody HashMap<String, Object> map) {
+		boolean retFlag = false;
+		Map<String, Object>retMap = new HashMap<String, Object>();
+		retMap = voteDao.voting(map);
+		return retMap;
+	}
+	
+	
+	
+	
 }
