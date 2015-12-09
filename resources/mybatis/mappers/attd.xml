@@ -10,7 +10,8 @@
 		INSERT INTO B_ATTD_NUMBER
 		VALUES ( SYSDATE,
 				 #{randomNumber},
-				 #{classNo } )
+				 #{classNo },
+				 b_attd_seq.nextval )
 	</insert>
 	
 	<insert id="insertStartAttd" parameterType="AttendanceVo">
@@ -28,4 +29,31 @@
 		WHERE class_no = #{classNo }  
 		  AND attd_status = '출석중'
 	</update>
+	
+	<select id="getClassAttdByDateAndUserNo" parameterType="hashmap" resultType="hashmap">
+		SELECT AAA.created_date, AAA.random_number, AAA.class_no, AAA.attd_no, AAA.class_name, AAA.start_time, totalusertable.total_user , attdusertable.attd_total_user
+		FROM (SELECT class_no, COUNT(*) total_user
+				FROM b_class_user 
+			  GROUP BY class_no
+			  ) totalusertable, 			
+			 (SELECT an.created_date, an.random_number, an.class_no, an.attd_no, c.CLASS_NAME, C.START_TIME 
+			    FROM B_ATTD_NUMBER an  , b_class c
+			   WHERE an.CREATED_DATE between to_date(#{strDate} ,'YYYYMMDDHHmi') and to_date('2015 12 08','YYYYMMDDHHmi')+1
+			   <!-- WHERE an.CREATED_DATE between to_date('2015 12 08','YYYYMMDDHHmi') and to_date('2015 12 08','YYYYMMDDHHmi')+1 -->
+				 AND an.class_no IN (select class_no 
+									from b_class_user
+									where class_role = 'teacher'
+									and user_no= #{userNo} )
+									<!-- and user_no= '10' ) -->
+				AND an.CLASS_NO = c.CLASS_NO 
+			  ORDER BY class_no                     -- attd_no 로 바꾸자
+			  ) AAA
+			  ,
+			  (SELECT attd_no, COUNT(*)attd_total_user
+				FROM B_Attendance
+				GROUP BY attd_no
+			  ) attdusertable
+		WHERE AAA.class_no = totalusertable.class_no
+		  AND AAA.attd_no = attdusertable.attd_no 	
+	</select>
 </mapper>

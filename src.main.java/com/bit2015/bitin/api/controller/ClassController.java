@@ -58,10 +58,10 @@ public class ClassController {
 		}
 		else{
 			resString="success";
-			Long randomLong = util.createRandomNumber();
+			Long randomLong = util.createRandomNumber(); //랜덤 숫자 생성
 			System.out.println("================RAND NUMBER : "+randomLong);
 			AttdNumberVo attdNumberVo = new AttdNumberVo();
-			Long classNo  = classService.getClassNoViaClassName(className);
+			Long classNo  = classService.getClassNoViaClassName(className); 
 			if(classNo == -1L) {
 				System.out.println("getClassNo 실패");
 				retMap.put("message", "className 에 해당하는 수업이 없음");
@@ -69,13 +69,13 @@ public class ClassController {
 			else {
 				attdNumberVo.setClassNo(classNo);
 				attdNumberVo.setRandomNumber(randomLong); 
-				if( !attdService.insertAttdNumberVo(attdNumberVo) ) {
-					List<UserVo> userList = classService.getUserInfoListViaClassNo(classNo);
+				if( !attdService.insertAttdNumberVo(attdNumberVo) ) {  //랜덤 숫자 저장
+					List<UserVo> userList = classService.getUserInfoListViaClassNo(classNo); //학생 리스트구해서
 					AttendanceVo attdVo = new AttendanceVo();
 					attdVo.setClassNo(classNo);
-					for(UserVo vo : userList) {
+					for(UserVo vo : userList) {				//학생들 각각
 						attdVo.setUserNo(vo.getUserNo());
-						attdService.startAttd(attdVo);
+						attdService.startAttd(attdVo);		// 출석중 으로 변경
 					}
 					System.out.println("AttdNumVo DB insert실패");
 					resString="fail";
@@ -92,7 +92,7 @@ public class ClassController {
 		return retMap;
 	}
 	
-	/**
+	/********송이가 쓰는거 
 	 * @param userVo (userId 받아와야됨)
 	 * (Id가 고유한 아이디 아니면 error 남)
 	 * @return List<String> 으로    List<"groupName"> return 함 
@@ -107,13 +107,15 @@ public class ClassController {
 		
 		String userId = userVo.getUserId();
 		Long userNo = userService.getUserNoViaUserId(userId);
-		List<String> classNameList = classService.getClassNameListByUserNo(userNo);
+		List<ClassVo> classNameList = classService.getClassNameTimeListByUserNo(userNo);
 		
 		if(classNameList== null ){
 			retMap.put("message", "groupList==null이다.");
 		}else{
 			resString="success";
 			retMap.put("data", classNameList);
+		
+			
 		}
 		retMap.put("result", resString);
 		return retMap;
@@ -154,7 +156,7 @@ public class ClassController {
 		return retMap;
 	}
 
-	/**
+	/** 사용 안하고 있음, 미완성
 	 * @param classVo
 	 * @return 
 	 * class 만들기
@@ -213,46 +215,36 @@ public class ClassController {
 	}
 	
 	
-	//TODO : 송이가 사용할것. 
-		@ResponseBody
-		@RequestMapping(value="/class-name-and-no")
-		public Map<String , Object> getClassNameAndNoViaUserId (
-				@RequestBody UserVo userVo ){
-			System.out.println("@b ClassCont getClassInfo: getClassNameAndNoViaUserId userVo : "+userVo);
-			HashMap<String, Object>retMap = new HashMap<String, Object>();
-			String resString ="fail";
-
-			if(userVo== null){
-				retMap.put("message", "에러 : userVo == null");
-			}else {
-				List<HashMap<String, Object>> classInfoList = classService.getClassNameAndNoByUserId(userVo.getUserId());
-				if(classInfoList== null ){
-					resString = "fail";
-					retMap.put("message", "group is empty");
-				}else{
-					resString="success";
-					retMap.put("data", classInfoList);
-				}
+ 
+	/**	//TODO : 송이가 사용할것.
+	 * @param userVo
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/class-name-and-no")
+	public Map<String , Object> getClassNameAndNoViaUserId (
+			@RequestBody UserVo userVo ){
+		System.out.println("@b ClassCont getClassInfo: getClassNameAndNoViaUserId userVo : "+userVo);
+		HashMap<String, Object>retMap = new HashMap<String, Object>();
+		String resString ="fail";
+	
+		if(userVo== null){
+			retMap.put("message", "에러 : userVo == null");
+		}else {
+			List<HashMap<String, Object>> classInfoList = classService.getClassNameAndNoByUserId(userVo.getUserId());
+			if(classInfoList== null ){
+				resString = "fail";
+				retMap.put("message", "group is empty");
+			}else{
+				resString="success";
+				retMap.put("data", classInfoList);
 			}
-			retMap.put("result", resString);
-			System.out.println("retMap :"+ retMap);
-		
-			return retMap;
 		}
+		retMap.put("result", resString);
+		System.out.println("retMap :"+ retMap);
+	
+		return retMap;
+	}
 		
-		@ResponseBody
-		@RequestMapping("/classattd-by-date")
-		public Map<String, Object> getClassAttdByDate( 
-				@RequestBody HashMap<String, Object> inputMap ) { //이거안되면 HashMap<> 대신 String 으로 해서 util 에 있는거 쓰기 
-			HashMap<String, Object> retMap = new HashMap<String, Object>();
-			String retString = "fail";
-			
-			Long classNo = (Long)inputMap.get("classNo");
-			//TODO : classService.getClassAttdByDate( classNo, attdDate ) ;
-			
-			
-			retMap.put("result", retString);
-			return retMap;
-		}
-
+		
 }

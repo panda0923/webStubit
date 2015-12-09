@@ -44,7 +44,9 @@ public class ClassDao {
 		retFlag = (1 == sqlSession.insert("class.joinClass", insertMap) );
 		return retFlag;
 	}
-	
+
+	/** 사용중인가.. 모르겠음
+	 */
 	public List<HashMap<String, Object>> getClassInfoListOfUserNo (Long userNo ) {
 		List<HashMap<String, Object>> retList = null;
 		retList = sqlSession.selectList("class.getClassInfoListOfUserNo", userNo);
@@ -61,7 +63,7 @@ public class ClassDao {
 	
 	public Long getClassNoViaClassNameTemp ( String className ) {
 		Long retLong = 0L;
-		retLong = sqlSession.selectOne("class.getClassNoViaClassNameTemp", className);
+		retLong = sqlSession.selectOne("class.getClassNoViaClassName", className);
 		System.out.println("@Class Dao className :"+className);
 		System.out.println("@Class Dao classNo :"+retLong);
 		return retLong;
@@ -74,7 +76,15 @@ public class ClassDao {
 		
 	}
 
-	
+	/******** 송이 사용중
+	 * @param userNo
+	 * @return
+	 */
+	public List<ClassVo> getClassNameTimeListByUserNo(Long userNo ){
+		List<ClassVo> retList = null;
+		retList = sqlSession.selectList("class.getClassNameTimeListByUserNo", userNo);
+		return retList;
+	}
 	/**
 	 * @param userId 
 	 * @return List(hashmap> 으로 

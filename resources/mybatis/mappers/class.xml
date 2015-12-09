@@ -77,11 +77,18 @@
 	<select id="getClassNameListByUserNo" parameterType="long" resultType="String">
 		SELECT class_name AS className
 		  FROM b_class
-		 WHERE class_no IN (SELECT class_no 
+		 WHERE class_no IN (SELECT class_no
 							  FROM b_class_user
 						     WHERE user_no =#{userNo} ) 
 	</select>
-	
+	<select id="getClassNameTimeListByUserNo" parameterType="long" resultType="ClassVo">
+		SELECT class_name AS className,
+			   start_time AS startTime
+		  FROM b_class
+		 WHERE class_no IN (SELECT class_no,start_time
+							  FROM b_class_user
+						     WHERE user_no =#{userNo} ) 
+	</select>
 	
 	<!-- userId 가 들어가 있는 수업들의 과목명과 담당 선생님이름 List<hashmap>으로 -->
 	<select id="getClassNameAndPhoneIdOfThatClassViaUserId" parameterType="string" resultType="hashmap">
@@ -90,7 +97,7 @@
 																	   FROM b_class_user
 																	  WHERE user_no = (SELECT user_no
 																						 FROM b_user
-																						WHERE user_id = #{userId }))cno
+																						WHERE user_id = #{userId })) cno
 		WHERE cno.class_no = c.class_NO
 		  AND cu.class_ROLE='teacher'
 		  AND cu.class_NO = c.class_NO
