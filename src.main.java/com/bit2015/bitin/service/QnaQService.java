@@ -39,6 +39,7 @@ public class QnaQService {
 	 * @return isnert 성공하면 true 실패하면 false return
 	 */
 	public boolean insertQ ( QnaQVo qVo ) {
+		System.out.println("insertService qVo : "+qVo);
 		boolean retFlag = false;
 		retFlag = qnaDao.insertQ(qVo);
 		return retFlag;
@@ -47,6 +48,12 @@ public class QnaQService {
 	/**
 	 * @param YjQVo preQvo   ( 윤주가 안드로이드에서 사용한 Vo 형태)
 	 * @return QnaQVo (DB . 서버. 쪽에 맞춘 Vo 형태로 바꿔서 return 해줌)
+	 * 
+	 * 
+	 * 		preQVo.setSenderId((String)inputMap.get("senderId"));
+			preQVo.setReceiverId((String)inputMap.get("receiverId"));
+			preQVo.setMessage((String)inputMap.get("message"));
+			preQVo.setLesson((String)inputMap.get("lesson"));
 	 */
 	public QnaQVo transformYjQVoToQnaQVo (YjQVo preQVo ) {
 		QnaQVo postQVo = new QnaQVo();
@@ -59,7 +66,7 @@ public class QnaQService {
 		//TODO:qType, qRef  에 관한 규약 안정해져있음
 		postQVo.setqType("StuToTea");
 		postQVo.setqRef("-");
-		
+		System.out.println("transform : postQVo : "+postQVo);
 		if(preQVo.getqNo()!=null) {
 			postQVo.setQnaQNo(preQVo.getqNo());
 		}

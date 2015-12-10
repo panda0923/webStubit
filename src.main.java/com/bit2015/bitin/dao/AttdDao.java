@@ -1,5 +1,8 @@
 package com.bit2015.bitin.dao;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -47,5 +50,24 @@ public class AttdDao {
 		System.out.println("@dao : classNo : "+classNo);
 		retLong = (long)sqlSession.update("attd.updateEndAtttdViaClassNo" , classNo);
 		return retLong;
+	}
+	
+	
+	
+	
+	/************** 송이 사용중
+	 * @param strDate (YYYYMMDD) 형식
+	 * @param userNo
+	 * @return 	해당 유저(선생)가  출석체크 실행한 특정 date의 수업목록들 List<강의명, startTime,  출석한 인원수, 전체인원수>
+	 */
+	public List<HashMap<String, Object>> getClassAttdInfoListByAttdNoAndUserNo ( String strDate, Long userNo ) {
+		System.out.println("the dao");
+		List<HashMap<String, Object>> retList = null;
+		HashMap<String, Object> inputMap = new HashMap<String, Object>();
+		inputMap.put("userNo", 10L);
+		inputMap.put("strDate", "20151208");
+		retList = sqlSession.selectList("attd.getClassAttdByDateAndUserNo", inputMap );
+		System.out.println("The Dao result : "+retList);
+		return retList;
 	}
 }

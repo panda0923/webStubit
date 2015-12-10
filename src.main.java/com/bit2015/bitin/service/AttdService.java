@@ -1,5 +1,7 @@
 package com.bit2015.bitin.service;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Timer;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.bit2015.bitin.api.thread.AttdThread;
 import com.bit2015.bitin.dao.AttdDao;
+import com.bit2015.bitin.dao.ClassDao;
 import com.bit2015.bitin.vo.AttdNumberVo;
 import com.bit2015.bitin.vo.AttendanceVo;
 
@@ -16,6 +19,8 @@ public class AttdService {
 	@Autowired
 	AttdDao attdDao;
 
+	@Autowired
+	ClassDao classDao;
 	/**
 	 * @param attdNumberVo (randomNumber, classNo ) 필수
 	 * @return 성공하면 true return
@@ -50,6 +55,31 @@ public class AttdService {
 		retLong = attdDao.updateEndAttdViaClassNo(classNo);
 		return retLong;
 	}
+	
+	
+	/** The ONe
+	 * @param strDate
+	 * @param userNo
+	 * @return
+	 */
+	public List<HashMap<String, Object>> getClassAttdInfoListByAttdNoAndUserNo ( String strDate, Long userNo ) {
+		List<HashMap<String, Object>> retList = null;
+		retList = attdDao.getClassAttdInfoListByAttdNoAndUserNo(strDate, userNo);
+		return retList;
+	}
+	
+	
+//	public List<HashMap<String, Object>> getClassAttdInfoListByDateAndUserNo ( String strDate, Long userNo ) {
+//		List<HashMap<String, Object>> retList = null;
+//		retList = attdDao.getClassAttdInfoListByDateAndUserNo(strDate, userNo);
+//		return retList;
+//	}
+//	public HashMap<String, Object> getClassAttdInfoByDateAndUserNoAndClassNo ( String strDate, Long userNo, Long classNo ) {
+//		HashMap<String, Object> retMap = null;
+//		return retMap;
+//	}
+	
+	
 	
 	/*public boolean startAttdTimer ( Long classNo ) {
 		boolean retFlag  =false;
