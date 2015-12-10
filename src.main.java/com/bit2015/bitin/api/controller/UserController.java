@@ -125,7 +125,9 @@ public class UserController {
 	
 	/**
 	 * @param userVo (id, password 필수) 
-	 * @return map{("message", 파라미터값에대한 오류 표시), ("result", success or fail), ("data", userType)}
+	 * @return 
+	 * 성공시 result:success,user_type
+	 * 실패시 result:fail / message:이유
 	 * 윤주요청 (이제그냥"/login"은 필요없다고함)
 	 * made by 현준
 	 */
