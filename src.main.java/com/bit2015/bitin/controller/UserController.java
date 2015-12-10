@@ -55,4 +55,11 @@ public class UserController {
 		session.invalidate();
 		return "redirect:/index";
 	}
+	
+	@RequestMapping("/join")
+	public String joinWeb( @ModelAttribute UserVo userVo ){
+		System.out.println(userVo);
+		userService.insertUser(userVo);
+		return "main/index";
+	}
 }

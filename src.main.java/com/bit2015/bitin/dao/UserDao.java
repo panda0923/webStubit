@@ -27,7 +27,6 @@ public class UserDao {
 			System.out.println("@bitin@UserDao -  exception 발생 !!!!!!!!!!!!!!!!!!!!!!! exception e : "+e);
 			e.printStackTrace();
 		}
-		System.out.println("retFlag : "+retFlag);
 		return retFlag;
 	}
 
