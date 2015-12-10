@@ -15,6 +15,7 @@
 <meta name="author" content="">
 <meta charset="utf-8">
 <script>
+	
 </script>
 </head>
 <body class="background-dark">
@@ -28,74 +29,47 @@
 						</h4>
 					</div>
 					<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
-					<c:choose>
-					<c:when test='${empty authUser }'>
-						<ul class="navbar-buttons pull-right">
-							<li><a href="/bitin/registerform"
-								class="btn btn-sm btn-transparent"> 회원가입 </a></li>
-						</ul>
-						<ul class="navbar-buttons pull-right">
-							<li><a href="/bitin/loginform"
-								class="btn btn-sm btn-transparent"> 로그인 </a></li>
-						</ul>
-						</c:when>
-						<c:otherwise>
-						<ul class="navbar-buttons pull-right">
-							<li><a href="/bitin/registerform"
-								class="btn btn-sm btn-transparent"> 개인정보 수정</a></li>
-						</ul>
-						<ul class="navbar-buttons pull-right">
-							<li><a href="/bitin/logout"
-								class="btn btn-sm btn-transparent"> 로그아웃</a></li>
-						</ul>
-						<ul class="navbar-buttons pull-right">
-							<h4>${authUser.userName }<small> 님 접속중</small></h4>
-						</ul>
-						
-						</c:otherwise>
-					</c:choose>
 				</div>
 			</header>
 			<div class="content">
 				<div id="carousel-landing"
 					class="carousel slide carousel-landing carousel-fade">
-					<ol class="carousel-indicators">
+					<!-- <ol class="carousel-indicators">
 						<li data-target="#carousel-landing" data-slide-to="0"
 							class="active"></li>
-					</ol>
+					</ol> -->
 					<div class="carousel-inner">
-                            <div class="item active">
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <div class="animated fadeInLeftBig">
-                                            <h1 class="slide-one-header"><strong>StuBit </strong>for Mobile <br>Android App</h1>
-                                            <p class="lead hidden-xs">
-                                                간단한 서비스 제공
-                                            </p>
-                                            <p>
-                                                <a href="404"
-                                                   class="btn btn-lg btn-transparent">
-                                                    download &nbsp; <i class="fa fa-shopping-cart"></i>
-                                                </a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="text-align-center animated fadeInRightBig">
-                                            <img src="/bitin/assets/img/test.png" alt="Second slide">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-					
+						<div class="item active">
+							<div class="row">
+								<div class="col-xs-6">
+									<div class="animated fadeInLeftBig">
+										<h1 class="slide-one-header">
+											<strong>StuBit </strong>for Mobile <br>Android App
+										</h1>
+										<p class="lead hidden-xs">간단한 서비스 제공</p>
+										<p>
+											<a href="404" class="btn btn-lg btn-transparent">
+												download &nbsp; <i class="fa fa-shopping-cart"></i>
+											</a>
+										</p>
+									</div>
+								</div>
+								<div class="col-xs-6">
+									<div class="text-align-center animated fadeInRightBig">
+										<img src="/bitin/assets/img/test.png" alt="Second slide">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 	
 					<a class="left carousel-control carousel-control-landing"
 						href="#carousel-landing" data-slide="prev"> <span
 						class="icon-prev"></span>
 					</a> <a class="right carousel-control carousel-control-landing"
 						href="#carousel-landing" data-slide="next"> <span
 						class="icon-next"></span>
-					</a>
+					</a> -->
 				</div>
 			</div>
 		</div>
@@ -121,7 +95,7 @@
 											</p>
 										</div>
 										<div class="col-xs-8">
-											<h4>자료관리</h4>
+											<h4><a href="/bitin/board/list">자료관리</h4>
 											<p>수업 자료 관리에 편의를 제공합니다.</p>
 										</div>
 									</div>
@@ -218,19 +192,9 @@
 						</div>
 					</div>
 				</div>
-				<!--  
-                    <p class="preview text-align-center">
-                        <a href="../white/index.html" class="btn btn-lg btn-danger">
-                            &nbsp; Preview the White Version &nbsp;
-                        </a>
-                    </p>
-                    -->
 			</div>
 		</div>
-		<!--  
-		<h2 class="thanks text-align-center">ⓒ Type B 2015</h2>
-		-->
-		<!--  <p class="lead text-align-center"><a class="back-to-top" href="#"> back to top <i class="fa fa-angle-up"></i></a></p> -->
+		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 	</div>
 	<!-- common libraries. required for every page-->
 	<script src="/jblog/assets/lib/jquery/dist/jquery.min.js"></script>

@@ -3,6 +3,8 @@ package com.bit2015.bitin.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,47 +21,38 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
-	
 
 	/**
-	 * @param userVo (id, password 필수) 
-	 * @return 
-	 * 성공시 result:success
-	 * 실패시 result:fail / message:이유
+	 * @param userVo
+	 *            (id, password 필수)
+	 * @return 성공시 result:success 실패시 result:fail / message:이유
 	 * 
-	 * 사실상 로그인 기능은 없고 아이디,비밀번호가 일치하는 유저가 있는지만 확인해줌
+	 *         사실상 로그인 기능은 없고 아이디,비밀번호가 일치하는 유저가 있는지만 확인해줌
 	 */
-	@ResponseBody
-	@RequestMapping(value="/login")
-	public Map<String, Object> login(
-			@RequestBody UserVo userVo ){
-		System.out.println("@userAPIController login : userVo : "+userVo);
-		HashMap<String, Object>retMap = new HashMap<String, Object>();
-		String resString ="fail";
 
-		boolean loginFlag;
-		
-		if(userVo== null || userVo.getUserId()==null || userVo.getUserPassword()==null){
-			retMap.put("message", "id, password 모두 입력하세요");
-		}
-		else{
-			loginFlag = userService.checkIdAndPassword(userVo);
-			if ( loginFlag ==false){
-				retMap.put("message", "아이디 비밀번호 오류");
+	@RequestMapping("/login")
+	public String loginWeb(HttpSession session, @ModelAttribute UserVo userVo) {
+		if (userVo == null) {
+			System.out.println("@UserController ERROR : userVo==null");
+		} else if (userVo.getUserId() == null || userVo.getUserPassword() == null) {
+			System.out.println("@UserController ERROR : userVo.name or userVo.password ==null");
+		} else {
+			UserVo retUserVo = userService.getUserVoViaIdAndPassword(userVo);
+			if (retUserVo == null) {
+				// 로그인실패 - 어차피 modal ajax에서 미리 check 해서 실패 case없음
+			} else {
+				session.setAttribute("authUser", retUserVo);
 			}
-			else{
-				resString= "success";
-			}
 		}
-		retMap.put("result", resString);
-		return retMap;
+		Map<String, Object> retMap = new HashMap<String, Object>();
+		retMap.put("result", "success");
+		return "redirect:/index";
 	}
-	
-	@ResponseBody
-	@RequestMapping("/join")
-	public String join( @ModelAttribute UserVo userVo) {
-		System.out.println(userVo);
-		
-		return "ha";
+
+	@RequestMapping("/logout")
+	public String logoutWeb(HttpSession session) {
+		session.removeAttribute("authUser");
+		session.invalidate();
+		return "redirect:/index";
 	}
 }

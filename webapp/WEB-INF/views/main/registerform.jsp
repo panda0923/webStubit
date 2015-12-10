@@ -103,11 +103,9 @@ function idChanged() {
 </script>
 </head>
 <body class="background-dark">
-	<div class="logo"></div>
-	<div class="content container">
-		<h2 class="page-title">STUPID</h2>
-		<div class="row">
-			<div class="col-md-7">
+	<div class="container">
+		<div class="content">
+			<div class="no-margin">
 				<section class="widget">
 					<div class="body">
 						<form id="user-form" class="form-horizontal form-label-center" action="/bitin/user/join"
@@ -115,7 +113,7 @@ function idChanged() {
 							data-parsley-priority-enabled="false"
 							data-parsley-excluded="input[name=gender]">
 							<fieldset class="mt-sm">
-								<legend> 회원가입페이지입니다 </legend>
+								<legend> StuBit Join Page </legend>
 							</fieldset>
 							<fieldset>
 								<legend class="section">개인 정보</legend>
@@ -125,36 +123,36 @@ function idChanged() {
 										<div class="input-group">
 											<input type="text" id="id" name="userId" class="form-control input-transparent" onChange="idChanged();"> 
 											<span id="check-todo" class="input-group-btn " >
-	                                           	<button  onclick="checkId();" class="btn btn-warning" type="button">중복체크!</button></span>
+	                                           	<button  onclick="checkId();" class="btn btn-warning" type="button">중복체크</button></span>
 											<span id="check-done" class="input-group-btn hide" >
 	                                           	<button  class="btn btn-success" type="button">사용가능</button></span>
 											<span id="check-dupl" class="input-group-btn hide" >
-	                                           	<button  class="btn btn-danger" type="button">사용중!</button></span>
+	                                           	<button  class="btn btn-danger" type="button">사용중</button></span>
 											
 										</div>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="control-label col-sm-4" for="name">NAME</label>
+									<label class="control-label col-sm-4" for="name">Name</label>
 									<div class="col-sm-4">
 										<input type="text" id="name" name="userName"
 											class="form-control input-transparent">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="control-label col-sm-4" for="password">PASSWORD</label>
+									<label class="control-label col-sm-4" for="password">Password</label>
 									<div class="col-sm-4">
 										<input type="password" id="password" name="userPassword" class="form-control input-transparent">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="control-label col-sm-4" for="password">CONFIRM PASSWORD</label>
+									<label class="control-label col-sm-4" for="password">Confirm Password</label>
 									<div class="col-sm-4">
 										<input type="password" id="re-password" class="form-control input-transparent">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="control-label col-sm-4">classification</label>
+									<label class="control-label col-sm-4">Classfication</label>
 									<div class="col-sm-8">
 										<div id="gender" class="btn-group" data-toggle="buttons">
 											<label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
