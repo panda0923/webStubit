@@ -2,26 +2,33 @@ package com.bit2015.bitin.vo;
 
 public class BoardVo {
 	private String classNo;
-	private Long baordNo;
+	private Long boardNo;
 	private String title;
 	private String content;
 	private Long userNo;
 	private Long viewCount;
 	private String regDate;
+	private String userName;
 	public String getClassNo() {
 		return classNo;
 	}
 	public void setClassNo(String classNo) {
 		this.classNo = classNo;
 	}
-	public Long getBaordNo() {
-		return baordNo;
+	public Long getBoardNo() {
+		return boardNo;
 	}
-	public void setBaordNo(Long baordNo) {
-		this.baordNo = baordNo;
+	public void setBoardNo(Long baordNo) {
+		this.boardNo = baordNo;
 	}
 	public String getTitle() {
 		return title;
+	}
+	public String getuserName() {
+		return userName;
+	}
+	public void setuserName(String userName) {
+		this.userName = userName;
 	}
 	public void setTitle(String title) {
 		this.title = title;
@@ -50,12 +57,14 @@ public class BoardVo {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
-	
 	@Override
 	public String toString() {
-		return "BoardVo [classNo=" + classNo + ", baordNo=" + baordNo + ", title=" + title + ", content=" + content
-				+ ", userNo=" + userNo + ", viewCount=" + viewCount + ", regDate=" + regDate + "]";
+		return "BoardVo [classNo=" + classNo + ", boardNo=" + boardNo + ", title=" + title + ", content=" + content
+				+ ", userNo=" + userNo + ", viewCount=" + viewCount + ", regDate=" + regDate + ", userName=" + userName
+				+ "]";
 	}
+	
+
 
 
 

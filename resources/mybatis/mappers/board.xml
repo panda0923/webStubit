@@ -127,4 +127,36 @@
 		]]>			
 	</update>	 -->
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!--  ******************************   2015.12.09 김현준이 임시로만든 게시판리스트를 불러오는 sql입니다.  **************************         -->
+	
+	<select id="selectListTemp" resultType="BoardVo">
+			<![CDATA[
+			SELECT class_no as classNo,
+				   board_no as boardNo,
+				   title as title,
+				   content as content,
+				   user_name as userName,
+				   view_cnt as viewCount,
+				   reg_date as regDate
+			  FROM b_board,b_user
+			  where b_board.USER_NO=b_user.USER_NO
+			]]>
+	</select>
+	
+	<!-- **************************************************************************************************************** -->
+	
+	
+	
+	
+	
+	
+	
 </mapper>

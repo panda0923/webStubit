@@ -1,12 +1,10 @@
 package com.bit2015.bitin.dao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
-import org.eclipse.jdt.internal.compiler.ast.ArrayAllocationExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -60,21 +58,50 @@ public class VoteDao {
 	
 	
 	
-	public Map<String, Object>  voting(HashMap<String, Object> map) {
+	public boolean  voting(HashMap<String, Object> map) {
 		boolean retFlag = false;
-		HashMap<String, Object>retMap = new HashMap<String, Object>();
-		System.out.println("@@voteDao : insertVoteTitle : " + map);
 		try {
-			retFlag = (1 == sqlSession.insert("vote.setVoteTitle", map));
+			retFlag = (1 == sqlSession.insert("vote.voting", map));
 		} catch (Exception e) {
 			System.out.println("@bitin@UserDao - insertVoteTitle exception 발생 !!!!!!!!!!!!!!!!!!!!!!! exception e : " + e);
 			e.printStackTrace();
 		}
-		System.out.println("retFlag : " + retFlag);
-		return retMap;
+		return retFlag;
 	}
 	
 	
+	
+	
+	public boolean  deleteVoteTitle( int voteNumber) {
+		boolean retFlag = false;
+		try {
+			retFlag = (1 == sqlSession.delete("vote.deleteVoteTitle", voteNumber));
+		} catch (Exception e) {
+			System.out.println("@bitin@VoteDao - deleteVoteTitle exception 발생 !!!!!!!!!!!!!!!!!!!!!!! exception e : " + e);
+			e.printStackTrace();
+		}
+		return retFlag;
+	}
+	public boolean  deleteVoteContent( int voteNumber) {
+		boolean retFlag = false;
+		try {
+			retFlag = (1 == sqlSession.delete("vote.deleteVoteContent", voteNumber));
+		} catch (Exception e) {
+			System.out.println("@bitin@VoteDao - deleteVoteContent exception 발생 !!!!!!!!!!!!!!!!!!!!!!! exception e : " + e);
+			e.printStackTrace();
+		}
+		return retFlag;
+	}
+	public boolean  deleteVoteAnswer( int voteNumber) {
+		boolean retFlag = false;
+		try {
+			retFlag = (1 == sqlSession.delete("vote.deleteVoteAnswer", voteNumber));
+		} catch (Exception e) {
+			System.out.println("@bitin@VoteDao - deleteVoteAnswer exception 발생 !!!!!!!!!!!!!!!!!!!!!!! exception e : " + e);
+			e.printStackTrace();
+		}
+		return retFlag;
+	}
 	
 	
 	

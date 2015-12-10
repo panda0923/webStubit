@@ -41,6 +41,16 @@
 						</tr>
 					</thead>
 					<tbody>
+					
+<!-- **************************************************			2015.12.09 김현준 임시로 게시판리스트 가져오기  ************************************************	 -->
+					
+					
+					
+					<c:set var='count' value='${fn:length(listData.list) }' />		
+					<c:forEach items='${listData.list }' var='vo' varStatus='status'>
+					
+					
+					
 						<tr>
 							<td>${vo.boardNo }</td>
 							<td><span class="fw-semi-bold">${vo.userName }</span></td>
@@ -52,6 +62,16 @@
 							<td class="width-150">
 							</td>
 						</tr>
+						
+						
+					</c:forEach>
+						
+						
+						
+						
+<!-- **************************************************			2015.12.09 김현준 임시로 게시판리스트 가져오기  ************************************************	 -->
+						
+						
 					</tbody>
 				</table>
 			</div>

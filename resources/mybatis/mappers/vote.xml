@@ -55,6 +55,28 @@
 	</insert>	
 	
 	
+	<delete id="deleteVoteTitle" parameterType="int">
+		<![CDATA[
+			delete
+			from b_vote_title
+			where vote_number = #{voteNumber }
+		]]>
+	</delete>	
+	<delete id="deleteVoteContent" parameterType="int">
+		<![CDATA[
+			delete
+			from b_vote_Content
+			where vote_number = #{voteNumber }
+		]]>
+	</delete>		
+	<delete id="deleteVoteAnswer" parameterType="int">
+		<![CDATA[
+			delete
+			from b_vote_Answer
+			where vote_number = #{voteNumber }
+		]]>
+	</delete>	
+	
 	
 	
 </mapper>

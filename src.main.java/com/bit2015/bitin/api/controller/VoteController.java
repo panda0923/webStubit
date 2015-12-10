@@ -70,15 +70,14 @@ public class VoteController {
 			retMap.put("result", resultStr);
 			retMap.put("data", list);
 		}	
-		
 		return retMap;
 	}
 	
 	
 	/**
 	 * @param map(userId)
-	 * @return map{"message",파라미터가 null일때 발생하는 메세지),("result",success or fail),("data", 투표리스트) }
-	 * 파라미터로 받아오는 아이디에 해당되는 투표리스트를 받아오는 메소드입니다.
+	 * @return map{"message",파라미터가 null일때 발생하는 메세지),("result",success or fail) }
+	 * 유저가 투표하는 메소드
 	 * 조윤주 요구
 	 * made by 현준.
 	 * 
@@ -92,16 +91,36 @@ public class VoteController {
 		HashMap<String, Object>retMap = new HashMap<String, Object>();
 		System.out.println("control - voting  : map : "+map);
 		String resultStr = "fail";
-		
 		if( map == null){
 			retMap.put("message", "모든 파라미터값 null 상태임");
 		}else{
-			voteService.insertVoteTitleAndContent(map);
+			boolean flag = voteService.voting(map);
+			System.out.println(flag);
 			resultStr = "success"; 
-		}	
-		retMap.put("result", resultStr);
-		retMap.put("data", voteService.phoneIdListbyUserIdAndClassName(map));
-		System.out.println(voteService.phoneIdListbyUserIdAndClassName(map));
+			retMap.put("result", resultStr);
+		}		
 		return retMap;
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/delete")
+	public Map<String, Object> delete(
+			@RequestBody HashMap<String, Object> map){
+		System.out.println("control - vote - delete  : map : "+map);
+		HashMap<String, Object>retMap = new HashMap<String, Object>();
+		int voteNumber = (int)map.get("voteNumber");
+		System.out.println("control - votedelete : int : "+voteNumber);
+		String resultStr = "fail";
+		if( map == null){
+			retMap.put("message", "모든 파라미터값 null 상태임");
+		}else{
+			boolean flag = voteService.delete(voteNumber);
+			System.out.println(flag);
+			resultStr = "success"; 
+			retMap.put("result", resultStr);
+		}		
+		return retMap;
+	}
+	
 }

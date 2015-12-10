@@ -40,14 +40,16 @@ public class VoteService {
 	}
 	
 	
-	public Map<String, Object> voting(  @RequestBody HashMap<String, Object> map) {
-		boolean retFlag = false;
-		Map<String, Object>retMap = new HashMap<String, Object>();
-		retMap = voteDao.voting(map);
-		return retMap;
+	public boolean voting(  @RequestBody HashMap<String, Object> map) {
+			boolean retFlag= voteDao.voting(map);
+			return retFlag;
 	}
 	
 	
+	public boolean delete(  int voteNumber) {
+		boolean retFlag = (voteDao.deleteVoteTitle(voteNumber) &&  voteDao.deleteVoteContent(voteNumber)   &&   voteDao.deleteVoteAnswer(voteNumber)  );
+		return retFlag;
+}
 	
 	
 }

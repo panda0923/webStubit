@@ -11,6 +11,7 @@
 		<typeAlias alias="QnaQVo" type="com.bit2015.bitin.vo.QnaQVo"></typeAlias>
 		<typeAlias alias="MessageVo" type="com.bit2015.bitin.vo.MessageVo"></typeAlias>
 		<typeAlias alias="VoteVo" type="com.bit2015.bitin.vo.VoteVo"></typeAlias>
+		<typeAlias alias="BoardVo" type="com.bit2015.bitin.vo.BoardVo"></typeAlias>
 	</typeAliases>
 
 	<mappers>	
@@ -21,5 +22,6 @@
 		<mapper resource="mybatis/mappers/class.xml" />
 		<mapper resource="mybatis/mappers/vote.xml" />
 		<mapper resource="mybatis/mappers/message.xml" />
+		<mapper resource="mybatis/mappers/board.xml" />
 	</mappers>
 </configuration>
