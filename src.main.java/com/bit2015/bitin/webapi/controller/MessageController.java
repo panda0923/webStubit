@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit2015.bitin.service.MessageService;
-import com.bit2015.bitin.vo.QnaQVo;
-import com.bit2015.bitin.vo.YjQVo;
 
 @Controller("messageAPIController")
 @RequestMapping("/api/message")

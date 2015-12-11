@@ -40,7 +40,7 @@ public class MainController {
 		}
 		
 		
-		return "main/main";
+		return "/main/main";
 	}
 	@RequestMapping("/")
 	public String empty() {
@@ -51,27 +51,27 @@ public class MainController {
 	@RequestMapping("/bootstrap")
 	public String bootStrap() {
 		
-		return "main/main";
+		return "/main/main";
 	}
 	
 	@RequestMapping("/intro")
 	public String intro() {
-		return "main/intro";
+		return "/main/intro";
 	}
 
 	@RequestMapping("/index")
 	public String index() {
-		return "main/index";
+		return "/main/index";
 	}
 
 	@RequestMapping("/loginform")
 	public String loginform() {
-		return "main/loginform";
+		return "/main/loginform";
 	}
 
 	@RequestMapping("/registerform")
 	public String registerformform() {
-		return "main/registerform";
+		return "/main/registerform";
 	}
 	   
 	   

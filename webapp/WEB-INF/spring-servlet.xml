@@ -2,17 +2,58 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns="http://www.springframework.org/schema/beans"
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
-	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd"
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
 	xmlns:mvc="http://www.springframework.org/schema/mvc">
+
 
 	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
 	<mvc:default-servlet-handler/>
 	
 	<!-- validator, conversionService, messageConverter를 자동으로 등록 -->
-	<mvc:annotation-driven />
+	<mvc:annotation-driven>
+	     <!-- argument resolver -->
+	     <mvc:argument-resolvers>
+		 	<bean class="com.bit2015.bitin.annotation.AuthUserHandlerMethodArgumentResolver"/>           
+	     </mvc:argument-resolvers>
+	</mvc:annotation-driven>
+	
+	
+	  <!-- Interceptors -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+        	<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/user/login" />
+			<mvc:exclude-mapping path="/user/logout" />
+			<mvc:exclude-mapping path="/assets/**" />
+    		<bean class="com.bit2015.bitin.interceptor.AuthInterceptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+        	<mvc:mapping path="/user/login" />
+    		<bean class="com.bit2015.bitin.interceptor.AuthLoginInterceptor" />
+        </mvc:interceptor>        
+        <mvc:interceptor>
+        	<mvc:mapping path="/user/logout" />
+    		<bean class="com.bit2015.bitin.interceptor.AuthLogoutInterceptor" />
+        </mvc:interceptor>        
+    </mvc:interceptors>
+    
+    
+	<!-- 메세지 컨버터 등록 -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	   <property name="messageConverters">
+	      <list>
+	      	 <!-- String Message Converter : text/html -->
+	         <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+	         <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+	      </list>
+	   </property>
+	</bean>
+	
+	
+	
 	
 	<context:annotation-config />
 	<context:component-scan base-package="com.bit2015.bitin" />

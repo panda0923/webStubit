@@ -130,4 +130,14 @@ public class UserService {
 		return retList;
 	}
 
+	
+	/**
+	 * @param vo
+	 * @return vo
+	 *  auth를 사용한 로그인
+	 */
+	public UserVo login( UserVo vo ) {
+		UserVo userVo = userDao.get( vo );
+		return userVo;
+	}
 }

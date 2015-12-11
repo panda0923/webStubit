@@ -113,5 +113,15 @@ public class UserDao {
 	}
 	
 	
+	/** test 안함
+	 * @param vo
+	 * @return
+	 */
+	public UserVo get( UserVo vo ) {
+		UserVo userVo = sqlSession.selectOne( "user.getUserVoByIdAndPassword",  vo );
+		return userVo;
+	}
+	
+	
 	
 }
