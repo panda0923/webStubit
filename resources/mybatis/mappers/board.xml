@@ -145,7 +145,7 @@
 				   content as content,
 				   user_name as userName,
 				   view_cnt as viewCount,
-				   reg_date as regDate
+				   to_char(reg_date, 'yyyy-mm-dd' ) as regDate
 			  FROM b_board,b_user
 			  where b_board.USER_NO=b_user.USER_NO
 			]]>

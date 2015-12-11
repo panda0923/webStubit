@@ -9,6 +9,7 @@ public class BoardVo {
 	private Long viewCount;
 	private String regDate;
 	private String userName;
+	
 	public String getClassNo() {
 		return classNo;
 	}

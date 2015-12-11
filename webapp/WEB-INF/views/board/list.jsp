@@ -16,12 +16,13 @@
 <meta name="author" content="">
 <meta charset="utf-8">
 <script>
-
+	
 </script>
 
 </head>
 <body class="background-dark">
 	<section class="content">
+	<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 		<header>
 			<h4>
 				guestbook list test<span class="fw-semi-bold">Styles</span>
@@ -41,72 +42,55 @@
 						</tr>
 					</thead>
 					<tbody>
-					
-<!-- **************************************************			2015.12.09 김현준 임시로 게시판리스트 가져오기  ************************************************	 -->
-					
-					
-					
-					<c:set var='count' value='${fn:length(listData.list) }' />		
-					<c:forEach items='${listData.list }' var='vo' varStatus='status'>
-					
-					
-					
-						<tr>
-							<td>${vo.boardNo }</td>
-							<td><span class="fw-semi-bold">${vo.userName }</span></td>
-							<td class="hidden-xs"><small> <span
-									class="fw-semi-bold"><a href="/bitin/board/list/${vo.boardNo }">${vo.title }</span>							
-							</small></td>
-							<td class="hidden-xs">${vo.viewCount }</a></td>
-							<td class="hidden-xs">${vo.regDate }</td>
-							<td class="width-150">
-							</td>
-						</tr>
-						
-						
-					</c:forEach>
-						
-						
-						
-						
-<!-- **************************************************			2015.12.09 김현준 임시로 게시판리스트 가져오기  ************************************************	 -->
-						
-						
+
+						<c:set var='count' value='${fn:length(listData.list) }' />
+						<c:forEach items='${listData.list }' var='vo' varStatus='status'>
+
+
+
+							<tr>
+								<td>${vo.boardNo }</td>
+								<td><span class="fw-semi-bold">${vo.userName }</span></td>
+								<td class="hidden-xs"><small> <span
+										class="fw-semi-bold"><a href="/bitin/board/list/${vo.boardNo }">${vo.title }</a></span>
+								</small></td>
+								<td class="hidden-xs">${vo.viewCount }</td>
+								<td class="hidden-xs">${vo.regDate }</td>
+								<td class="hidden-xs"></td>
+							</tr>
+						</c:forEach>
+
 					</tbody>
 				</table>
 			</div>
 		</div>
+		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 	</section>
+	<!-- 
 	<div class="loader-wrap hiding hide">
 		<i class="fa fa-circle-o-notch fa-spin"></i>
 	</div>
 	<div class="loader-wrap hiding hide">
 		<i class="fa fa-circle-o-notch fa-spin"></i>
-	</div>
+	 </div>
+	 -->
 	<script src="/bitin/assets/lib/jquery/dist/jquery.min.js"></script>
 	<script src="/bitin/assets/lib/jquery-pjax/jquery.pjax.js"></script>
-	<script
-		src="/bitin/assets/lib/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+	<script src="/bitin/assets/lib/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
 	<script src="/bitin/assets/lib/widgster/widgster.js"></script>
 	<script src="/bitin/assets/lib/underscore/underscore.js"></script>
 
 	<!-- common application js -->
 	<script src="/bitin/assets/js/app.js"></script>
 	<script src="/bitin/assets/js/settings.js"></script>
-
-	<script
-		src="/bitin/assets/lib/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+	<script src="/bitin/assets/lib/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 	<script src="/bitin/assets/lib/underscore/underscore.js"></script>
 	<script src="/bitin/assets/lib/backbone/backbone.js"></script>
-	<script
-		src="/bitin/assets/lib/backbone.paginator/lib/backbone.paginator.min.js"></script>
+	<script src="/bitin/assets/lib/backbone.paginator/lib/backbone.paginator.min.js"></script>
 	<script src="/bitin/assets/lib/backgrid/lib/backgrid.min.js"></script>
-	<script
-		src="/bitin/assets/lib/backgrid-paginator/backgrid-paginator.js"></script>
-	<script
-		src="/bitin/assets/lib/datatables/media/js/jquery.dataTables.min.js"></script>
-
-	<!-- page application js -->
+	<script src="/bitin/assets/lib/backgrid-paginator/backgrid-paginator.js"></script>
+	<script src="/bitin/assets/lib/datatables/media/js/jquery.dataTables.min.js"></script>
+   <!-- page application js -->
 	<script src="/bitin/assets/js/tables-dynamic.js"></script>
 
 </body>

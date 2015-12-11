@@ -34,12 +34,6 @@
 			<div class="content">
 				<div class="no-margin">
 					<section class="widget">
-						<header>
-							<h4>
-								<i class="fa fa-file-alt"></i> Article <small>Create new
-									or edit existing article</small>
-							</h4>
-						</header>
 						<div class="body">
 							<form class="form-horizontal" role="form" id="article-form"
 								method="post" novalidate="novalidate"
@@ -55,10 +49,10 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-3 control-label" for="content">
+										<label class="col-sm-1 control-label" for="content">
 											Content </label>
 										<div class="col-sm-9">
-											<textarea rows="10" class="form-control input-transparent"
+											<textarea rows="20" class="form-control input-transparent"
 												id="content"></textarea>
 										</div>
 									</div>
@@ -72,7 +66,7 @@
 										</div>
 									</div>
 								</fieldset>
-								<div class="form-actions">
+								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-9 col-sm-offset-5">
 											<div class="btn-toolbar">

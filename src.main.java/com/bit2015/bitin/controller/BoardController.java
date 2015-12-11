@@ -5,14 +5,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit2015.bitin.service.BoardService;
-import com.bit2015.bitin.service.VoteService;
-import com.bit2015.bitin.vo.BoardVo;
 
 
 
@@ -27,6 +22,11 @@ public class BoardController {
 	@RequestMapping("/writeform")
 	public String writeForm(){
 		return "/board/writeform";
+	}
+
+	@RequestMapping("/view")
+	public String view(){
+		return "/board/view";
 	}
 	
 	
@@ -44,6 +44,8 @@ public class BoardController {
 		
 		return "/board/list";
 	}
+	
+	
 
 	
 }

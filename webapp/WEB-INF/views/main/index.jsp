@@ -197,21 +197,21 @@
 		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 	</div>
 	<!-- common libraries. required for every page-->
-	<script src="/jblog/assets/lib/jquery/dist/jquery.min.js"></script>
-	<script src="/jblog/assets/lib/jquery-pjax/jquery.pjax.js"></script>
+	<script src="/bitin/assets/lib/jquery/dist/jquery.min.js"></script>
+	<script src="/bitin/assets/lib/jquery-pjax/jquery.pjax.js"></script>
 	<script
-		src="/jblog/assets/lib/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
-	<script src="/jblog/assets/lib/widgster/widgster.js"></script>
-	<script src="/jblog/assets/lib/underscore/underscore.js"></script>
+		src="/bitin/assets/lib/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+	<script src="/bitin/assets/lib/widgster/widgster.js"></script>
+	<script src="/bitin/assets/lib/underscore/underscore.js"></script>
 
 	<!-- common application js -->
-	<script src="/jblog/assets/js/app.js"></script>
-	<script src="/jblog/assets/js/settings.js"></script>
+	<script src="/bitin/assets/js/app.js"></script>
+	<script src="/bitin/assets/js/settings.js"></script>
 
 
 
 	<!-- page specific scripts -->
-	<script src="js/landing.js"></script>
+	<script src="/bitin/js/landing.js"></script>
 
 </body>
 </html>
