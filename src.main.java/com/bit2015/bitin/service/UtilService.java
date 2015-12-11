@@ -1,6 +1,8 @@
 package com.bit2015.bitin.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +70,23 @@ public class UtilService {
 		return retMap;
 	}
 	
+	
+	
+	
+	/**
+	 * @param strInput
+	 * @return List<String,Object>
+	 * string으로 들어온List를  hashmap 으로 파싱해줌
+	 */
+	public List<String> transformStringToList( String strInput ) {
+		List<String> retList = new ArrayList<>();
+		strInput = strInput.substring(1, strInput.length()-1);	//[, ] 두개 지움
+		String[] strArray = strInput.split(", ");
+		for(String token : strArray ) {
+			retList.add(token);
+		}
+		return retList;
+	}
 	/**
 	 * @param inputStrDate
 	 * @return

@@ -25,4 +25,12 @@ public class BoardService {
 			
 			return map;
 	}
+	
+	
+	
+	public BoardVo viewBoard( Long no ){
+		BoardVo vo = boardDao.get( no );
+		boardDao.updateViewCount( no );
+		return vo;
+	}
 }

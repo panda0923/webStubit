@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bit2015.bitin.service.UtilService;
 import com.bit2015.bitin.service.VoteService;
 import com.bit2015.bitin.vo.VoteVo;
 
@@ -20,6 +21,8 @@ public class VoteController {
 
 	@Autowired
 	VoteService voteService;
+	@Autowired
+	UtilService utilService;
 	
 	/**
 	 * @param map(userId, className, voteTitle, voteContent)
@@ -34,6 +37,10 @@ public class VoteController {
 			@RequestBody HashMap<String, Object> map ) {
 		HashMap<String, Object>retMap = new HashMap<String, Object>();
 		System.out.println("control - insertVote  : map : "+map);
+//		
+//		System.out.println("list : "+voteContList);
+//		System.out.println(voteContList.getClass());
+//		System.out.println(map.get("voteContent").getClass());
 		String resultStr = "fail";
 		if( map == null){
 			retMap.put("message", "모든 파라미터값 null 상태임");
@@ -60,6 +67,7 @@ public class VoteController {
 		String userId = (String)map.get("userId");
 		System.out.println("control - voteList  : String : "+userId);
 		List<VoteVo> list = null;
+		System.out.println(list);
 		HashMap<String, Object>retMap = new HashMap<String, Object>();
 		String resultStr = "fail";
 		if( userId == null){
@@ -70,6 +78,7 @@ public class VoteController {
 			retMap.put("result", resultStr);
 			retMap.put("data", list);
 		}	
+		System.out.println(retMap);
 		return retMap;
 	}
 	
@@ -122,5 +131,32 @@ public class VoteController {
 		}		
 		return retMap;
 	}
+	
+	
+	
+	
+	
+	@ResponseBody
+	@RequestMapping("/votelistbyvoteno")
+	public Map<String, Object> votelistbyvoteno(
+			@RequestBody HashMap<String, Object> map){
+		HashMap<String, Object>retMap = new HashMap<String, Object>();
+		int voteNumber = (int)map.get("voteNumber");
+		System.out.println("control - votedelete : int : "+voteNumber);
+		String resultStr = "fail";
+		
+		if( map == null){
+			retMap.put("message", "모든 파라미터값 null 상태임");
+		}else{
+			retMap.put("data", voteService.voteListByVoteNo(voteNumber));
+			resultStr = "success"; 
+			retMap.put("result", resultStr);
+		}		
+		return retMap;
+	}
+	
+	
+	
+	
 	
 }

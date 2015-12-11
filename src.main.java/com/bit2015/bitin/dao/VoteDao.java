@@ -17,10 +17,11 @@ public class VoteDao {
 	SqlSession sqlSession;
 
 	public boolean insertVoteTitle(HashMap<String, Object> map) {
-		boolean retFlag = false;
+		boolean retFlag = true;
 		System.out.println("@@voteDao : insertVoteTitle : " + map);
 		try {
-			retFlag = (1 == sqlSession.insert("vote.setVoteTitle", map));
+//			retFlag = (1 == sqlSession.insert("vote.setVoteTitle", map));
+			sqlSession.insert("vote.setVoteTitle", map);
 		} catch (Exception e) {
 			System.out.println("@bitin@UserDao - insertVoteTitle exception 발생 !!!!!!!!!!!!!!!!!!!!!!! exception e : " + e);
 			e.printStackTrace();
@@ -28,11 +29,11 @@ public class VoteDao {
 		System.out.println("retFlag : " + retFlag);
 		return retFlag;
 	}
-	public boolean insertVoteContent(HashMap<String, Object> map) {
+	public boolean insertVoteContent(String voteContent) {
 		boolean retFlag = false;
-		System.out.println("@@voteDao : insertVoteContent : " + map);
+		System.out.println("@@voteDao : insertVoteContent : " + voteContent);
 		try {
-			retFlag = (1 == sqlSession.insert("vote.setVoteContent", map));
+			retFlag = (1 == sqlSession.insert("vote.setVoteContent", voteContent));
 		} catch (Exception e) {
 			System.out.println("@bitin@VoteDao - insertVoteContent exception 발생 !!!!!!!!!!!!!!!!!!!!!!! exception e : " + e);
 			e.printStackTrace();
@@ -51,7 +52,7 @@ public class VoteDao {
 	public List<VoteVo> getVoteList(String userId) {
 		List<VoteVo> list = null;
 		list=sqlSession.selectList("vote.getVoteList", userId);
-		System.out.println(list);
+		System.out.println("!!!!!!!!!!!!!!!!!" + list);
 		return list;
 	}
 	
@@ -104,5 +105,11 @@ public class VoteDao {
 	}
 	
 	
+	public List<VoteVo> voteListByVoteNo(int voteNumber) {
+		List<VoteVo> list = null;
+		list=sqlSession.selectList("vote.voteListByVoteNo", voteNumber);
+		System.out.println(list);
+		return list;
+	}
 	
 }

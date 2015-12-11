@@ -145,7 +145,7 @@
 				   content as content,
 				   user_name as userName,
 				   view_cnt as viewCount,
-				   reg_date as regDate
+				   to_char(reg_date, 'yyyy-mm-dd' ) as regDate
 			  FROM b_board,b_user
 			  where b_board.USER_NO=b_user.USER_NO
 			]]>
@@ -153,10 +153,29 @@
 	
 	<!-- **************************************************************************************************************** -->
 	
+	<!--  ******************************   2015.12.11 김현준이 임시로만든 게시판content와 조회수를 불러오는 sql입니다.  **************************         -->
+	<update id="updateViewCount" parameterType="long">
+		<![CDATA[
+		update board
+		   set view_cnt = view_cnt + 1		
+         where board_no = #{boardNo }
+		]]>			
+	</update>
 	
 	
+	<select id="selectByNo" resultType="BoardVo" parameterType="long">
+		<![CDATA[
+		select board_no as boardNO,
+			   title,
+			   content,
+			   user_no as userNo, 
+		  from b_board
+		 where  board_no=#{boardNo }			
+		]]>
+	</select>
 	
 	
+	<!-- **************************************************************************************************************** -->
 	
 	
 </mapper>

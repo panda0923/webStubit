@@ -11,18 +11,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.bit2015.bitin.dao.VoteDao;
 import com.bit2015.bitin.vo.VoteVo;
+import com.sun.glass.ui.Size;
 
 @Service
 public class VoteService {
 
 	@Autowired
 	VoteDao voteDao;
+	@Autowired
+	UtilService utilService;
 	
 	
 	public boolean insertVoteTitleAndContent(  HashMap<String, Object> map) {
 		boolean retFlag = false;
+//		ArrayList<String> list = new ArrayList<>();
+		System.out.println(map.get("voteContent"));
+		List<String >voteContList = utilService.transformStringToList((String)map.get("voteContent"));
+//		voteContList = (ArrayList<String>) map.get("voteContent");
+		System.out.println(map.get("voteContent"));
 		retFlag = voteDao.insertVoteTitle(map);
-		retFlag = voteDao.insertVoteContent(map);
+		for( int i = 0 ; i <voteContList.size(); i++){
+			voteDao.insertVoteContent(voteContList.get(i));
+		}
 		return retFlag;
 	}
 	public List<String> phoneIdListbyUserIdAndClassName( HashMap<String, Object> map){
@@ -51,5 +61,11 @@ public class VoteService {
 		return retFlag;
 }
 	
+	
+	public List<VoteVo> voteListByVoteNo(int voteNumber){
+		List<VoteVo> list = null;
+		list = voteDao.voteListByVoteNo(voteNumber);
+		return list;
+	}
 	
 }

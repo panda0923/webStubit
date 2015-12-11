@@ -7,11 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import com.bit2015.bitin.service.BoardService;
-import com.bit2015.bitin.service.VoteService;
 import com.bit2015.bitin.vo.BoardVo;
 
 
@@ -44,6 +42,17 @@ public class BoardController {
 		
 		return "/board/list";
 	}
-
 	
+	
+	/**
+	 * @param no
+	 * @param model
+	 * @return boardNo,title,content,userNo
+	 */
+	@RequestMapping( "/view/{no}" )
+	public String view( @PathVariable( "no" ) Long no, Model model ) {
+		BoardVo vo = boardService.viewBoard( no );
+		model.addAttribute( "vo", vo );
+		return "/board/view";
+	}
 }

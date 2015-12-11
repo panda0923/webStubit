@@ -10,7 +10,10 @@
 					#{userId },
 					#{className },
 					#{voteTitle },
-					SYSDATE)
+					SYSDATE,
+					(select class_no
+					 from   b_class
+					 where class_name = #{className }))
 			]]>
 	</insert>	
 	<insert id="setVoteContent" parameterType="string">
@@ -34,7 +37,8 @@
 		SELECT  vote_title AS voteTitle, 
 				class_name AS className, 
 				created_date AS createdDate, 
-				vote_number AS voteNumber
+				vote_number AS voteNumber,
+				class_no as classNo
 		  FROM  b_vote_title
 		 WHERE  user_id = #{userId}
 	</select>	
@@ -76,6 +80,18 @@
 			where vote_number = #{voteNumber }
 		]]>
 	</delete>	
+	
+	
+	
+	
+	
+	
+	
+	<select id="voteListByVoteNo" parameterType="int" resultType="VoteVo" >
+		SELECT  vote_content
+		  FROM  b_vote_content
+		 where vote_number = #{voteNumber }
+	</select>	
 	
 	
 	
