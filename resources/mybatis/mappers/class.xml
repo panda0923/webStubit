@@ -137,4 +137,15 @@
 						  WHERE class_no = #{classNo } )
 	</select>
 	
+	<select id="getStudentHashMapListViaClassNo" parameterType="long" resultType="hashmap">
+		SELECT user_no AS userNo,
+			   user_id AS userId,
+			   user_name AS userName
+		FROM b_user
+		WHERE user_no IN (SELECT user_no 
+						  FROM b_class_user
+						  WHERE class_no =#{classNo}
+						    AND class_role = 'student')
+	</select>
+	
 </mapper>

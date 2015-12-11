@@ -42,11 +42,11 @@
 			   <!-- WHERE an.CREATED_DATE between to_date('2015 12 08','YYYYMMDDHHmi') and to_date('2015 12 08','YYYYMMDDHHmi')+1 -->
 				 AND an.class_no IN (select class_no 
 									from b_class_user
-									where class_role = 'teacher'
+									where class_role = #{classRole}
 									and user_no= #{userNo} )
 									<!-- and user_no= '10' ) -->
 				AND an.CLASS_NO = c.CLASS_NO 
-			  ORDER BY class_no                     -- attd_no 로 바꾸자
+			  ORDER BY class_no                     <!-- attd_no 로 바꾸자 -->
 			  ) AAA
 			  ,
 			  (SELECT attd_no, COUNT(*)attd_total_user
@@ -56,4 +56,26 @@
 		WHERE AAA.class_no = totalusertable.class_no
 		  AND AAA.attd_no = attdusertable.attd_no 	
 	</select>
+
+
+	<select id="getClassNoByAttdNo" resultType="long">
+		SELECT class_no
+		  FROM b_attd_number
+		 WHERE attd_no=#{attdNo }
+	</select>
+	<select id="getAttdStatusViaAttdNoAndUserNo" parameterType="hashmap" resultType="string">
+		SELECT attd_status 
+		  FROM b_attendance
+		 WHERE attd_no = #{attdNo} 
+		   AND user_no= #{userNo}
+	</select>
+	<select id="getAttdStatusListByUserNo" parameterType="long" resultType="hashmap">
+		SELECT created_date, an.CLASS_NO, an.ATTD_NO, c.class_name, c.START_TIME
+		  FROM b_attd_number an , b_class c
+		 WHERE an.class_no IN (SELECT class_no
+							  FROM b_class_user 
+							 WHERE user_no = #{userNo} )
+		  AND an.CLASS_NO = c.CLASS_NO
+	</select>
+	
 </mapper>

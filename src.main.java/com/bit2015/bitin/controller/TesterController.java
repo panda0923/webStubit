@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Timer;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,12 +39,19 @@ public class TesterController {
 	/**
 	 * 그냥test 용도
 	 */
-	@ResponseBody
 	@RequestMapping("/main")
-	public String TesterMain( ) {
-		  
+	public String TesterMain( ) {  
+		
+		System.out.println("result 100 "+attdService.getClassAttdInfoListByAttdNo(100L));
+		System.out.println("result 101 "+attdService.getClassAttdInfoListByAttdNo(101L));
+
+		System.out.println();
+		
 		System.out.println("test!!!!!!");
 		System.out.println( userService.getClassNameListByTeacherId("lsl") );
+		System.out.println("=========================================");
+		
+		System.out.println(attdService.getAttdStatusListByUserNo(10L));
 		
 /////////////////////////////////////////////////////////
 //		Test 하고 남은 코드들
@@ -85,7 +93,7 @@ public class TesterController {
 //		attdVo.setRandomNumber(1522L);
 //		attdService.insertAttdNumberVo(attdVo);
 		
-		return "aBC!";
+		return "junhyun-test/chart-test";
 	}
 
 }
