@@ -8715,7 +8715,7 @@ h6 small,
   filter: alpha(opacity=100);
 }
 #sidebar {
-  width: 268px;
+  width: -268px;
   -webkit-transform: translate3d(-268px, 0, 0);
   transform: translate3d(-268px, 0, 0);
 }
@@ -14539,7 +14539,6 @@ hr.fc-divider {
   border: 0;
 }
 .bootgrid-header .search .glyphicon-search {
-  vertical-align: top;
   padding: 9px 10px 0;
 }
 .bootgrid-header .search .glyphicon-search:before {

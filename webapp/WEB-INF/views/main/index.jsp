@@ -34,26 +34,29 @@
 
 </head>
 <body>
-	<header id="header" class="clearfix" data-current-skin="blue">
+<%-- 
+	<c:import url="/WEB-INF/views/include/navi.jsp"></c:import>
+
+ --%>	
+  <header id="header" class="clearfix" data-current-skin="blue">
 		<ul class="header-inner">
 			<c:choose>
 				<c:when test='${empty authUser }'>
 
 					<li class="hidden-xs"><a href="/bitin/index" class="m-l-10"><img
 							src="/bitin/assets/img/demo/logo.png" alt=""></a></li>
-					<li class="pull-right">
-					<a href="/bitin/loginform" id="login" title="login"
-						data-toggle="popover" data-placement="bottom"><i
+					<li class="pull-right"><a href="/bitin/loginform" id="login"
+						title="login" data-toggle="popover" data-placement="bottom"><i
 							class="btn btn-inverse" value="login"> Login </i></a></li>
-					<li class="pull-right"><a
-						href="/bitin/registerform" id="join" title="join"
-						data-toggle="popover" data-placement="bottom"> <i
+					<li class="pull-right"><a href="/bitin/registerform" id="join"
+						title="join" data-toggle="popover" data-placement="bottom"> <i
 							class="btn btn-default" value="join"> Join </i>
 					</a></li>
 				</c:when>
 				<c:otherwise>
 					<li id="menu-trigger" data-trigger="#sidebar">
-						<div class="btn btn-default btn-icon waves-effect waves-circle waves-float zmdi zmdi-apps">
+						<div
+							class="btn btn-default btn-icon waves-effect waves-circle waves-float zmdi zmdi-apps">
 						</div>
 					</li>
 					<li class="hidden-xs"><a href="/bitin/index" class="m-l-10"><img
@@ -286,34 +289,6 @@
 										<a class="lv-footer" href="">View All</a>
 									</div>
 								</div></li>
-							<!-- 
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" href=""><i class="tm-icon zmdi zmdi-more-vert"></i></a>
-                            <ul class="dropdown-menu dm-icon pull-right">
-                                <li class="skin-switch hidden-xs">
-                                    <span class="ss-skin bgm-lightblue" data-skin="lightblue"></span>
-                                    <span class="ss-skin bgm-bluegray" data-skin="bluegray"></span>
-                                    <span class="ss-skin bgm-cyan" data-skin="cyan"></span>
-                                    <span class="ss-skin bgm-teal" data-skin="teal"></span>
-                                    <span class="ss-skin bgm-orange" data-skin="orange"></span>
-                                    <span class="ss-skin bgm-blue" data-skin="blue"></span>
-                                </li>
-                                <li class="divider hidden-xs"></li>
-                                <li class="hidden-xs">
-                                    <a data-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a>
-                                </li>
-                                <li>
-                                    <a data-action="clear-localstorage" href=""><i class="zmdi zmdi-delete"></i> Clear Local Storage</a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="zmdi zmdi-face"></i> Privacy Settings</a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="zmdi zmdi-settings"></i> Other Settings</a>
-                                </li>
-                            </ul>
-                        </li>
-                         -->
 							<li class="hidden-xs" id="chat-trigger" data-trigger="#chat">
 								<a href=""><i class="tm-icon zmdi zmdi-comment-alt-text"></i></a>
 							</li>
@@ -331,9 +306,8 @@
 					type="text">
 			</div>
 		</div>
-	</header>
-
-	<section id="main" data-layout="layout-1">
+	</header> 
+	 <section id="main" data-layout="layout-1">
 		<aside id="sidebar" class="sidebar c-overflow">
 			<div class="profile-menu">
 				<a href="">
@@ -348,11 +322,7 @@
 
 				<ul class="main-menu">
 					<li><a href="profile-about.html"><i
-							class="zmdi zmdi-account"></i> View Profile</a></li>
-					<li><a href=""><i class="zmdi zmdi-input-antenna"></i>
-							Privacy Settings</a></li>
-					<li><a href=""><i class="zmdi zmdi-settings"></i> Settings</a>
-					</li>
+							class="zmdi zmdi-account"></i> 내 정보</a></li>
 					<li><a href="/bitin/user/logout"><i
 							class="zmdi zmdi-time-restore"></i> Logout</a></li>
 				</ul>
@@ -360,31 +330,20 @@
 
 			<ul class="main-menu">
 				<li class="active"><a href="index.html"><i
-						class="zmdi zmdi-home"></i> Home</a></li>
+						class="zmdi zmdi-home"></i> 메인 페이지</a></li>
+
+                <!--  켈린더 -->
+				<li><a href="calendar.html"><i class="zmdi zmdi-calendar"></i>
+						일정표</a></li>
+                <!--  게시판 메뉴 -->
 				<li class="sub-menu"><a href=""><i
-						class="zmdi zmdi-view-compact"></i> Headers</a>
+						class="zmdi zmdi-view-list"></i> 게시판</a>
 
 					<ul>
-						<li><a href="textual-menu.html">Textual menu</a></li>
-						<li><a href="image-logo.html">Image logo</a></li>
-						<li><a href="top-mainmenu.html">Mainmenu on top</a></li>
+						<li><a href="form-elements.html">1게시판</a></li>
+						<li><a href="form-components.html">2게시판</a></li>
 					</ul></li>
-				<li><a href="typography.html"><i
-						class="zmdi zmdi-format-underlined"></i> Typography</a></li>
-				<li class="sub-menu"><a href=""><i
-						class="zmdi zmdi-widgets"></i> Widgets</a>
 
-					<ul>
-						<li><a href="widget-templates.html">Templates</a></li>
-						<li><a href="widgets.html">Widgets</a></li>
-					</ul></li>
-				<li class="sub-menu"><a href=""><i
-						class="zmdi zmdi-view-list"></i> Tables</a>
-
-					<ul>
-						<li><a href="tables.html">Normal Tables</a></li>
-						<li><a href="data-tables.html">Data Tables</a></li>
-					</ul></li>
 				<li class="sub-menu"><a href=""><i
 						class="zmdi zmdi-collection-text"></i> Forms</a>
 
@@ -395,71 +354,17 @@
 						<li><a href="form-validations.html">Form Validation</a></li>
 					</ul></li>
 				<li class="sub-menu"><a href=""><i
-						class="zmdi zmdi-swap-alt"></i>User Interface</a>
-					<ul>
-						<li><a href="colors.html">Colors</a></li>
-						<li><a href="animations.html">Animations</a></li>
-						<li><a href="box-shadow.html">Box Shadow</a></li>
-						<li><a href="buttons.html">Buttons</a></li>
-						<li><a href="icons.html">Icons</a></li>
-						<li><a href="alerts.html">Alerts</a></li>
-						<li><a href="preloaders.html">Preloaders</a></li>
-						<li><a href="notification-dialog.html">Notifications &
-								Dialogs</a></li>
-						<li><a href="media.html">Media</a></li>
-						<li><a href="components.html">Components</a></li>
-						<li><a href="other-components.html">Others</a></li>
-					</ul></li>
-				<li class="sub-menu"><a href=""><i
-						class="zmdi zmdi-trending-up"></i>Charts</a>
+						class="zmdi zmdi-trending-up"></i>차트</a>
 					<ul>
 						<li><a href="flot-charts.html">Flot Charts</a></li>
 						<li><a href="other-charts.html">Other Charts</a></li>
 					</ul></li>
-				<li><a href="calendar.html"><i class="zmdi zmdi-calendar"></i>
-						Calendar</a></li>
-				<li class="sub-menu"><a href=""><i class="zmdi zmdi-image"></i>Photo
-						Gallery</a>
+				<li class="sub-menu"><a href=""><i class="zmdi zmdi-image"></i>사진첩</a>
 					<ul>
 						<li><a href="photos.html">Default</a></li>
 						<li><a href="photo-timeline.html">Timeline</a></li>
 					</ul></li>
 
-				<li><a href="generic-classes.html"><i
-						class="zmdi zmdi-layers"></i> Generic Classes</a></li>
-				<li class="sub-menu"><a href=""><i
-						class="zmdi zmdi-collection-item"></i> Sample Pages</a>
-					<ul>
-						<li><a href="profile-about.html">Profile</a></li>
-						<li><a href="list-view.html">List View</a></li>
-						<li><a href="messages.html">Messages</a></li>
-						<li><a href="pricing-table.html">Pricing Table</a></li>
-						<li><a href="contacts.html">Contacts</a></li>
-						<li><a href="wall.html">Wall</a></li>
-						<li><a href="invoice.html">Invoice</a></li>
-						<li><a href="login.html">Login and Sign Up</a></li>
-						<li><a href="lockscreen.html">Lockscreen</a></li>
-						<li><a href="404.html">Error 404</a></li>
-					</ul></li>
-				<li class="sub-menu"><a href="form-examples.html"><i
-						class="zmdi zmdi-menu"></i> 3 Level Menu</a>
-
-					<ul>
-						<li><a href="form-elements.html">Level 2 link</a></li>
-						<li><a href="form-components.html">Another level 2 Link</a></li>
-						<li class="sub-menu"><a href="form-examples.html">I have
-								children too</a>
-
-							<ul>
-								<li><a href="">Level 3 link</a></li>
-								<li><a href="">Another Level 3 link</a></li>
-								<li><a href="">Third one</a></li>
-							</ul></li>
-						<li><a href="form-validations.html">One more 2</a></li>
-					</ul></li>
-				<li><a
-					href="https://wrapbootstrap.com/theme/material-admin-responsive-angularjs-WB011H985"><i
-						class="zmdi zmdi-money"></i> Buy this template</a></li>
 			</ul>
 		</aside>
 
@@ -548,7 +453,7 @@
 					</div>
 				</a>
 			</div>
-		</aside>
+		</aside> 
 
 		<section id="container">
 			<div class="container">
@@ -603,8 +508,9 @@
 							</ul>
 
 							<button class="btn bgm-amber btn-float waves-effect">
-								<i class="zmdi zmdi-mail-send"></i>
+								<a href="/bitin/board/list"><i class="zmdi zmdi-mail-send"></i></a>
 							</button>
+							
 						</div>
 
 						<div class="card-body card-padding"></div>
@@ -729,7 +635,7 @@
 
 	</section>
 
-	<footer id="footer">
+	<!-- <footer id="footer">
 		Copyright &copy; 2015 Type-B StuBit
 
 		<ul class="f-menu">
@@ -739,20 +645,13 @@
 			<li><a href="">Support</a></li>
 			<li><a href="">Contact</a></li>
 		</ul>
-	</footer>
-
-	<!-- Page Loader -->
-	<div class="page-loader">
-		<div class="preloader pls-blue">
-			<svg class="pl-circular" viewBox="25 25 50 50">
-                    <circle class="plc-path" cx="50" cy="50" r="20" />
-                </svg>
-
-			<p>Please wait...</p>
-		</div>
-	</div>
+	</footer> -->
+	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 
 	<!-- Javascript Libraries -->
+	<script>
+		var authUser = "${authUser.userName}";
+	</script>
 	<script
 		src="/bitin/assets/vendors/bower_components/jquery/dist/jquery.min.js"></script>
 	<script
@@ -789,7 +688,7 @@
 
 	<script src="/bitin/assets/js/charts.js"></script>
 	<script src="/bitin/assets/js/functions.js"></script>
-	<script src="/bitin/assets/js/demo.js"></script>
+	
 
 
 </body>
