@@ -90,7 +90,7 @@ public class QnaController {
 		}else{
 			YjQVo yjqVo = new YjQVo();
 			yjqVo.setReceiverId((String)inputMap.get("receiverId"));
-//			retMap.put("data", qnaQService.listQ(yjqVo) );
+			retMap.put("data", qnaQService.listQ(yjqVo) );
 		}
 		
 //		if( (preQVo.getSenderId()== null) || (preQVo.getMessage()==null) || (preQVo.getLesson()==null ) ) {

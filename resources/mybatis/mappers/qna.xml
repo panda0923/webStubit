@@ -21,14 +21,14 @@
 	
 	
 	
-	<select id="insertQ" parameterType="YjQVo" resultType="hashmap">
+	<select id="listQ" parameterType="YjQVo" resultType="hashmap">
 		Select class_name,
-			   ppt_no,
+			   q.ppt_no,
 			   u.student_name,
-			   created_date,
-			   q_message,
-			   qna_q_no
+			   q.created_date,
+			   q.q_message,
+			   q.qna_q_no
 		from b_q q, b_user u
-		where u.user_id = #{userId }
+		where (select user_no from u where u.user_id = #{userId })
 	</select>
 </mapper>

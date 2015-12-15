@@ -93,9 +93,9 @@ public class QnaQService {
 	
 	
 	
-//	public String listQ(YjQVo yjqVo){
-//		String listQ = QnaDao.listQ(yjqVo);
-//		return listQ;
-//	}
+	public String listQ(YjQVo yjqVo){
+		String listQ = qnaDao.listQ(yjqVo);
+		return listQ;
+	}
 
 }
