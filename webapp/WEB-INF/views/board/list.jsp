@@ -23,12 +23,13 @@
 <body class="background-dark">
 	<section class="content">
 	<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
+	<c:import url="/WEB-INF/views/include/navigation.jsp"></c:import>
 		<header>
 			<h4>
 				guestbook list test<span class="fw-semi-bold">Styles</span>
 			</h4>
 		</header>
-		<div class="body">
+		<div class="content">
 			<div class="mt">
 				<table id="datatable-table" class="table table-striped table-hover">
 					<thead>
