@@ -41,7 +41,7 @@ public class UtilService {
 		QnaQVo postQVo = new QnaQVo();
 		postQVo.setToWhoNo( userDao.getUserNoViaUserPhoneId(preQVo.getReceiverId()) );
 		postQVo.setFromUserNo(userDao.getUserNoViaUserId(preQVo.getSenderId()));
-		postQVo.setqMessage(preQVo.getMessage());
+		postQVo.setqMessage(preQVo.getqMessage());
 		postQVo.setClassNo(classDao.getClassNoViaClassNameTemp(preQVo.getLesson()) );
 		//if( 학생이 선생한테 보낸거면) TODO : 규약 정하기,이후에 추가
 		//if( 선생이 학생한테 ) 등등

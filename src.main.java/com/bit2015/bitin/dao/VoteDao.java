@@ -106,10 +106,11 @@ public class VoteDao {
 	}
 	
 	
-	public List<VoteVo> voteListByVoteNo(int voteNumber) {
-		List<VoteVo> list = null;
+	public List<String> voteListByVoteNo(int voteNumber) {
+		List<String> list = null;
+		System.out.println(voteNumber);
 		list=sqlSession.selectList("vote.voteListByVoteNo", voteNumber);
-		System.out.println(list);
+		System.out.println(list.get(1));
 		return list;
 	}
 	

@@ -1,5 +1,8 @@
 package com.bit2015.bitin.service;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,18 +24,18 @@ public class QnaQService {
 	UtilService util;
 	
 	
-	/**
+/*	*//**
 	 * @param preQVo
 	 * @return
 	 * 윤주가 보내준 형태를 변환,입력 해주는 method 
 	 ***********사용안함 : 변환해주는 method , insert해주는 method 로 나눈걸로 사용함 
-	 */
+	 *//*
 	public boolean insertYjQVo( YjQVo preQVo ) {
 		boolean retFlag = false;
 		QnaQVo qVo = util.transfromYjQVoToQnaQVo(preQVo);
 		retFlag = qnaDao.insertQ(qVo);
 		return retFlag;
-	}
+	}*/
 
 	/**
 	 * @param qVo ( toWhoNo, fromUserNo, qMessage, classNo, qType, qRef) 필요 
@@ -60,9 +63,9 @@ public class QnaQService {
 		
 		postQVo.setToWhoNo( userDao.getUserNoViaUserPhoneId(preQVo.getReceiverId()) );//
 		postQVo.setFromUserNo(userDao.getUserNoViaUserId(preQVo.getSenderId()));
-		postQVo.setqMessage(preQVo.getMessage());
+		postQVo.setqMessage(preQVo.getqMessage());
 		postQVo.setClassNo(classDao.getClassNoViaClassNameTemp(preQVo.getLesson()) );
-
+		postQVo.setPptNo(preQVo.getPptNo());
 		//TODO:qType, qRef  에 관한 규약 안정해져있음
 		postQVo.setqType("StuToTea");
 		postQVo.setqRef("-");
@@ -93,9 +96,16 @@ public class QnaQService {
 	
 	
 	
-	public String listQ(YjQVo yjqVo){
-		String listQ = qnaDao.listQ(yjqVo);
-		return listQ;
+	public List<YjQVo> listQ(YjQVo yjqVo){
+		List<YjQVo> retList = null;
+		retList = qnaDao.listQ(yjqVo);
+		return retList;
+	}
+	
+	
+	
+	public void deleteQ(YjQVo yjqVo){
+		qnaDao.deleteQ(yjqVo);
 	}
 
 }

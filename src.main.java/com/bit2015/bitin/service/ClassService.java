@@ -1,5 +1,6 @@
 package com.bit2015.bitin.service;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 
@@ -113,6 +114,23 @@ public class ClassService {
 	public List<UserVo> getUserInfoListViaClassNo ( Long classNo) {
 		List<UserVo> retList = null;
 		retList = classDao.getUserInfoListViaClassNo( classNo);
+		return retList;
+	}
+	
+	
+	public List<HashMap<String, Object>> getStudentPhoneIdListByUserId (String userId ){
+		List<HashMap<String, Object>> retList = null;
+		retList = classDao.getCLassListByUserId(userId);
+		
+		for( HashMap<String, Object> map : retList){
+			Long classNo = ((BigDecimal)map.get("CLASS_NO")).longValue();
+			System.out.println(classNo);
+			List<String> phoneIdList = null;
+			phoneIdList = classDao.getStudentPhoneIdListViaClassNo(classNo);
+			
+			map.put("PHONE_ID_LIST", phoneIdList);
+		}
+		System.out.println("최종 : "+retList);
 		return retList;
 	}
 }

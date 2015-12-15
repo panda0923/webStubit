@@ -13,8 +13,14 @@ public class QnaQVo {
 	
 	private String qType;
 	private String qRef;
+	private String pptNo;
 	
-	
+	public String getPptNo() {
+		return pptNo;
+	}
+	public void setPptNo(String pptNo) {
+		this.pptNo = pptNo;
+	}
 	public Long getQnaQNo() {		return qnaQNo;	}
 	public Long getToWhoNo() {		return toWhoNo;	}
 	public Long getFromUserNo() {		return fromUserNo;	}
@@ -50,10 +56,9 @@ public class QnaQVo {
 	}
 	@Override
 	public String toString() {
-		return "QnaQVo [qnaQNo=" + qnaQNo + ", toWhoNo=" + toWhoNo
-				+ ", fromUserNo=" + fromUserNo + ", qMessage=" + qMessage
-				+ ", createdDate=" + createdDate + ", classNo=" + classNo
-				+ ", qType=" + qType + ", qRef=" + qRef + "]";
+		return "QnaQVo [qnaQNo=" + qnaQNo + ", toWhoNo=" + toWhoNo + ", fromUserNo=" + fromUserNo + ", qMessage="
+				+ qMessage + ", createdDate=" + createdDate + ", classNo=" + classNo + ", qType=" + qType + ", qRef="
+				+ qRef + ", pptNo=" + pptNo + "]";
 	}
 	
 }

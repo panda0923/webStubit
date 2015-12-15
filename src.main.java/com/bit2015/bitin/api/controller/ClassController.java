@@ -156,6 +156,69 @@ public class ClassController {
 		return retMap;
 	}
 
+	@ResponseBody
+	@RequestMapping("/student-phone-list")
+	public Map<String, Object> getStudetPhoneIdListViaTeacherId ( 
+			@RequestBody HashMap<String, Object> inputMap ) {
+		HashMap<String, Object>retMap = new HashMap<String, Object>();
+		String userId = (String)inputMap.get("userId");
+		System.out.println("@student-phone-list : userId : "+userId);
+		String resString ="fail";
+
+		if(userId== null){
+			retMap.put("message", "userId is null");
+		}
+		else if( !userService.checkExistUserViaId(userId)){
+			//없는 아이디면
+			retMap.put("message", "없는 아이디임");
+		}
+		else {
+			List<HashMap<String, Object >>dataList = classService.getStudentPhoneIdListByUserId(userId);
+			if(dataList == null){
+				retMap.put("message", "가르치는 수업 없거나 듣는 학생이 없음");
+				
+			}
+			else{
+				resString="success";
+				retMap.put("data", dataList);
+			}
+		}
+		retMap.put("result", resString);
+		System.out.println("retMap :"+ retMap);
+		return retMap;
+				
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/** 사용 안하고 있음, 미완성
 	 * @param classVo
 	 * @return 

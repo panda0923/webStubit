@@ -29,6 +29,12 @@ public class HyunJunTestController {
 	@Autowired
 	MessageService messageService;
 	
+	@ResponseBody
+	@RequestMapping("ck")
+	public String Testttt() {
+//		classService.getStudentPhoneIdListByUserName("iron");
+		return "Ha";
+	}
 	
 	@ResponseBody
 	@RequestMapping("/main")

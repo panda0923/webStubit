@@ -44,12 +44,13 @@ public class QnaController {
 			YjQVo preQVo = new YjQVo();
 			preQVo.setSenderId((String)inputMap.get("senderId"));
 			preQVo.setReceiverId((String)inputMap.get("receiverId"));
-			preQVo.setMessage((String)inputMap.get("message"));
+			preQVo.setqMessage((String)inputMap.get("message"));
 			preQVo.setLesson((String)inputMap.get("lesson"));
-			preQVo.setPptNo((Long)inputMap.get("pptNo"));
+			preQVo.setPptNo((String)inputMap.get("pptNo"));
 			QnaQVo qVo = qnaQService.transformYjQVoToQnaQVo(preQVo);	//윤주가 보내준 Vo형태에서 서버DB에 맞는 Vo형태로 바꿈
 			if( qnaQService.insertQ(qVo) ){	//입력성공
 				resultStr = "success";
+				retMap.put("result", resultStr);
 			}else {
 				retMap.put("message", "DB 입력 실패 (서버쪽 문제) ");
 			}
@@ -73,14 +74,16 @@ public class QnaController {
 	}
 
 	
-	
+	/**
+	 * @param userId
+	 * @return className,pptNo,userName,createdDate, message,qnaQNo
+	 */
 	@ResponseBody
 	@RequestMapping("/list-q")
 	public Map<String, Object> listQ (
-//			@RequestBody YjQVo preQVo  ) {
 			@RequestBody HashMap<String, Object> inputMap  ) {
-//			@RequestParam()
-		System.out.println("create-q :"+inputMap);
+
+		System.out.println("list-q :"+inputMap);
 	
 		HashMap<String, Object> retMap = new HashMap<String, Object>();
 		String resultStr = "fail";
@@ -89,27 +92,40 @@ public class QnaController {
 			retMap.put("message", "userId안들어옴");
 		}else{
 			YjQVo yjqVo = new YjQVo();
-			yjqVo.setReceiverId((String)inputMap.get("receiverId"));
+			yjqVo.setReceiverId((String)inputMap.get("userId"));
+			System.out.println(yjqVo);
 			retMap.put("data", qnaQService.listQ(yjqVo) );
 		}
-		
-//		if( (preQVo.getSenderId()== null) || (preQVo.getMessage()==null) || (preQVo.getLesson()==null ) ) {
-//			retMap.put("message", "무언가 null상태임");
-//		}else{
-//			QnaQVo qVo = qnaQService.transformYjQVoToQnaQVo(preQVo);	//윤주가 보내준 Vo형태에서 서버DB에 맞는 Vo형태로 바꿈
-//			if( qnaQService.insertQ(qVo) ){	//입력성공
-//				resultStr = "success";
-//			}else {
-//				retMap.put("message", "DB 입력 실패 (서버쪽 문제) ");
-//			}
-//		}
-//		
 		retMap.put("result", resultStr);
 		
 		System.out.println("B@QContr retMap : "+retMap);
 		return retMap;
 	}
 	
+	
+	
+	@ResponseBody
+	@RequestMapping("/delete-q")
+	public Map<String, Object> deleteQ (
+			@RequestBody HashMap<String, Object> Map  ) {
+
+		System.out.println("delete-q :" + Map);
+
+		HashMap<String, Object> retMap = new HashMap<String, Object>();
+
+		if( (Map.get("qnaQNo")==null)){
+			retMap.put("message", "qnaQNo안들어옴");
+		}else{
+			
+			YjQVo yjqVo = new YjQVo();
+			yjqVo.setQnaQNo(Long.valueOf( Map.get("qnaQNo")+"" ));
+			qnaQService.deleteQ(yjqVo);
+			System.out.println(yjqVo);
+		}
+
+		System.out.println("B@QContr retMap : "+retMap);
+		return retMap;
+	}
 	
 
 }

@@ -143,7 +143,7 @@ public class VoteController {
 			@RequestBody HashMap<String, Object> map){
 		HashMap<String, Object>retMap = new HashMap<String, Object>();
 		int voteNumber = (int)map.get("voteNumber");
-		System.out.println("control - votedelete : int : "+voteNumber);
+		System.out.println("control - votelistbyvoteno : int : "+voteNumber);
 		String resultStr = "fail";
 		
 		if( map == null){
@@ -152,6 +152,7 @@ public class VoteController {
 			retMap.put("data", voteService.voteListByVoteNo(voteNumber));
 			resultStr = "success"; 
 			retMap.put("result", resultStr);
+			System.out.println(retMap);
 		}		
 		return retMap;
 	}

@@ -132,4 +132,20 @@ public class ClassDao {
 		retList = sqlSession.selectList("class.getUserInfoListViaClassNo", classNo);
 		return retList;
 	}
+	
+	public List<HashMap<String, Object>> getCLassListByUserId (String userId ){
+		List<HashMap<String, Object>> retList = null;
+		
+		retList = sqlSession.selectList("class.getClassNoAndClassNameViaUserId",userId);
+		
+		
+		System.out.println("result - HO : " + retList);
+		
+		return retList;
+	}
+	public List<String> getStudentPhoneIdListViaClassNo( Long classNo) {
+		List<String> retList = null;
+		retList = sqlSession.selectList("class.getStudentPhoneIdListViaClassNo", classNo );
+		return retList;
+	}
 }

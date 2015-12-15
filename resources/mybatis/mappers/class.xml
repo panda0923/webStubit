@@ -148,4 +148,21 @@
 						    AND class_role = 'student')
 	</select>
 	
+	<select id="getClassNoAndClassNameViaUserId" parameterType="string" resultType="hashmap">
+		SELECT cu.class_no, c.class_name 
+		  FROM b_class_user cu, b_class c
+		 WHERE user_no = (SELECT user_no 
+							FROM b_user 
+						   WHERE user_id = #{userId} )
+		  AND cu.class_no = c.class_no
+	</select>
+	
+	<select id="getStudentPhoneIdListViaClassNo" parameterType="long" resultType="string">
+		SELECT u.USER_PHONE_ID 
+		  FROM b_class_user cu, b_user u
+		 WHERE class_role = 'student'
+		  AND u.user_no = cu.user_no
+		  AND cu.class_no = #{classNo }
+	</select>
+	
 </mapper>

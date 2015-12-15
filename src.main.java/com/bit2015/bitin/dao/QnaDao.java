@@ -1,6 +1,10 @@
 package com.bit2015.bitin.dao;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
+import org.eclipse.jdt.internal.compiler.ast.SynchronizedStatement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,14 +23,32 @@ public class QnaDao {
 	 */
 	public boolean insertQ(QnaQVo qVo) {
 		boolean retFlag = false;
+		System.out.println("qna다오 가 실행됏나?");
 		retFlag = (1 == sqlSession.insert("qna.insertQ",qVo) );
+		System.out.println("qna다오 가 실행됏나?");
 		return retFlag;
 	}
 	
 	
-	public String listQ(YjQVo yjqVo) {
+	public List<YjQVo> listQ(YjQVo yjqVo) {
+		List<YjQVo> retList = null;
+		System.out.println("조윤주");
+		System.out.println(yjqVo);
+		retList = sqlSession.selectList("qna.listQ",yjqVo);
+		System.out.println("조윤주2");
+		
+		
+		return retList;
+	}
+	
+	
+	
+	public void deleteQ(YjQVo yjqVo) {
+		List<YjQVo> retList = null;
+		System.out.println("조윤주");
+		System.out.println(yjqVo);
+		sqlSession.delete("qna.deleteQ",yjqVo);
+		System.out.println("조윤주2");
 
-		String listQ = sqlSession.selectOne("qna.insertQ",yjqVo);
-		return listQ;
 	}
 }

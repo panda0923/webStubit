@@ -64,8 +64,8 @@ public class VoteService {
 }
 	
 	
-	public List<VoteVo> voteListByVoteNo(int voteNumber){
-		List<VoteVo> list = null;
+	public List<String> voteListByVoteNo(int voteNumber){
+		List<String> list = null;
 		list = voteDao.voteListByVoteNo(voteNumber);
 		return list;
 	}
