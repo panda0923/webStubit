@@ -83,5 +83,19 @@ public class QnaQService {
 		
 		return postQVo;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	public String listQ(YjQVo yjqVo){
+//		String listQ = QnaDao.listQ(yjqVo);
+//		return listQ;
+//	}
 
 }

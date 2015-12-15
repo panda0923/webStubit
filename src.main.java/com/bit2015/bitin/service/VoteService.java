@@ -45,7 +45,9 @@ public class VoteService {
 	
 	public List<VoteVo> getVoteList(String userId){
 		List<VoteVo> list = null;
+		System.out.println("aaaa");
 		list = voteDao.getVoteList(userId);
+		System.out.println(list);
 		return list;
 	}
 	

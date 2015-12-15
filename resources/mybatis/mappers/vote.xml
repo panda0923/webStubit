@@ -26,7 +26,7 @@
 	</insert>	
 	<select id="phoneIdListbyUserIdAndClassName" parameterType="hashmap" resultType="string" >
 		SELECT a.user_phone_id from b_user a,b_class b
-		 WHERE a.user_id = #{userId} and b.class_name = #{className}
+		 WHERE a.user_id = #{userId} and b.class_name = #{className }
 	</select>
 	
 	
@@ -34,13 +34,15 @@
 	
 	
 	<select id="getVoteList" parameterType="string" resultType="VoteVo" >
+		<![CDATA[
 		SELECT  vote_title AS voteTitle, 
 				class_name AS className, 
-				created_date AS createdDate, 
+				to_char(created_date, 'YYYY/MM/DD') AS createdDate, 
 				vote_number AS voteNumber,
 				class_no as classNo
 		  FROM  b_vote_title
-		 WHERE  user_id = #{userId}
+		 WHERE  class_no in (select class_no from b_class_user where user_no in (select user_no from b_user where user_id = #{userId }))
+			]]>
 	</select>	
 	
 	

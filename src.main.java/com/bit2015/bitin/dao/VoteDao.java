@@ -51,6 +51,7 @@ public class VoteDao {
 	
 	public List<VoteVo> getVoteList(String userId) {
 		List<VoteVo> list = null;
+		System.out.println("aaaa");
 		list=sqlSession.selectList("vote.getVoteList", userId);
 		System.out.println("!!!!!!!!!!!!!!!!!" + list);
 		return list;

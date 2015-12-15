@@ -1,5 +1,7 @@
 package com.bit2015.bitin.api.controller;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,7 +69,6 @@ public class VoteController {
 		String userId = (String)map.get("userId");
 		System.out.println("control - voteList  : String : "+userId);
 		List<VoteVo> list = null;
-		System.out.println(list);
 		HashMap<String, Object>retMap = new HashMap<String, Object>();
 		String resultStr = "fail";
 		if( userId == null){

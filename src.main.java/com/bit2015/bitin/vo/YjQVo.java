@@ -11,8 +11,6 @@ public class YjQVo {
 	private String time;
 	private String lesson;
 	
-	
-	
 	public Long getqNo() {		return qNo;	}
 	public String getReceiverId() {		return receiverId;	}
 	public String getSenderId() {		return senderId;	}
