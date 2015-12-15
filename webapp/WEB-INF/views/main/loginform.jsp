@@ -3,19 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- light-blue - v3.2.0 - 2015-10-05 -->
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>StuBit Login Page</title>
-
-<link href="/bitin/assets/css/application.css" rel="stylesheet">
-<link rel="shortcut icon" href="img/favicon.png">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-<meta charset="utf-8">
 <script>
 	function check() {
 		if ($("input#id").val() == "") {
@@ -29,70 +17,133 @@
 		}
 	}
 </script>
-
-</head>
-<body class="background-dark">
-	<div class="single-widget-container">
-		<section class="widget login-widget">
-			<header class="text-align-center">
-				<h4>로그인 페이지</h4>
-			</header>
-			<div class="body">
-				<form class="no-margin" action="/bitin/user/login" method="post">
-					<fieldset>
-						<div class="form-group">
-							<label for="ID">ID</label>
-							<div class="input-group">
-								<span class="input-group-addon"> <i class="fa fa-user"></i>
-								</span> <input id="id" name="userId" type="id"
-									class="form-control input-lg input-transparent"
-									placeholder="아이디를 입력해주세요">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="password">Password</label>
-							<div class="input-group input-group-lg">
-								<span class="input-group-addon"> <i class="fa fa-lock"></i>
-								</span> <input id="password" name="userPassword" type="password"
-									class="form-control input-lg input-transparent"
-									placeholder="비밀번호를 입력해주세요">
-							</div>
-						</div>
-					</fieldset>
-					<div class="form-actions">
-						<button type="submit" class="btn btn-block btn-lg btn-danger"
-							onclick="check();">
-							<span class="small-circle"><i class="fa fa-caret-right"></i></span>
-							<small>로그인</small>
-						</button>
-						<a class="forgot" href="#">아이디 또는 비밀번호 찾기(미구현)</a>
-					</div>
-				</form>
-			</div>
-			<footer>
-				<div class="facebook-login">
-					<a href="index.html"><span><i
-							class="fa fa-facebook-square fa-lg"></i> LogIn with Facebook(미구현)</span></a>
-				</div>
-			</footer>
-		</section>
-	</div>
-	<!-- common libraries. required for every page-->
-	<script src="/bitin/assets/lib/jquery/dist/jquery.min.js"></script>
-	<script src="/bitin/assets/lib/jquery-pjax/jquery.pjax.js"></script>
-	<script
-		src="/bitin/assets/lib/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
-	<script src="/bitin/assets/lib/widgster/widgster.js"></script>
-	<script src="/bitin/assets/lib/underscore/underscore.js"></script>
-
-	<!-- common application js -->
-	<script src="/bitin/assets/js/app.js"></script>
-	<script src="/bitin/assets/js/settings.js"></script>
-
-
-
-	<!-- page specific scripts -->
-
-
+<!DOCTYPE html>
+    <!--[if IE 9 ]><html class="ie9"><![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Material Admin</title>
+        
+        <!-- Vendor CSS -->
+        <link href="/bitin/assets/vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+        <link href="/bitin/assets/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+            
+        <!-- CSS -->
+        <link href="/bitin/assets/css/app.min.1.css" rel="stylesheet">
+        <link href="/bitin/assets/css/app.min.2.css" rel="stylesheet">
+    </head>
+    
+    
+    <body class="login-content">
+        <!-- Login -->
+        <div class="lc-block toggled" id="l-login">
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                <div class="fg-line">
+                    <input type="text" id="id" name="userId" class="form-control" placeholder="아이디를 입력해주세요">
+                </div>
+            </div>
+            
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="zmdi zmdi-male"></i></span>
+                <div class="fg-line">
+                    <input type="password" id="password" name="userPassword" class="form-control" placeholder="비밀번호를 입력해주세요">
+                </div>
+            </div>
+            
+            <div class="clearfix"></div>
+            
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="">
+                    <i class="input-helper"></i>
+                    암호 기억하기
+                </label>
+            </div>
+            
+            <a href="/bitin/user/login" class="btn btn-login btn-danger btn-float"><i class="zmdi zmdi-arrow-forward"></i></a>
+            
+            <ul class="login-navigation">
+                <li data-block="#l-register" class="bgm-red">회원가입</li>
+                <li data-block="#l-forget-password" class="bgm-orange">아이디 / 비밀번호 찾기</li>
+            </ul>
+        </div>
+        
+        <!-- Register -->
+        <div class="lc-block" id="l-register">
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                <div class="fg-line">
+                    <input type="text" class="form-control" placeholder="Username">
+                </div>
+            </div>
+            
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                <div class="fg-line">
+                    <input type="text" class="form-control" placeholder="Email Address">
+                </div>
+            </div>
+            
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="zmdi zmdi-male"></i></span>
+                <div class="fg-line">
+                    <input type="password" class="form-control" placeholder="Password">
+                </div>
+            </div>
+            
+            <div class="clearfix"></div>
+            
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="">
+                    <i class="input-helper"></i>
+                    Accept the license agreement
+                </label>
+            </div>
+            
+            <a href="" class="btn btn-login btn-danger btn-float"><i class="zmdi zmdi-arrow-forward"></i></a>
+            
+            <ul class="login-navigation">
+                <li data-block="#l-login" class="bgm-green">Login</li>
+                <li data-block="#l-forget-password" class="bgm-orange">Forgot Password?</li>
+            </ul>
+        </div>
+        
+        <!-- Forgot Password -->
+        <div class="lc-block" id="l-forget-password">
+            <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu risus. Curabitur commodo lorem fringilla enim feugiat commodo sed ac lacus.</p>
+            
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                <div class="fg-line">
+                    <input type="text" class="form-control" placeholder="Email Address">
+                </div>
+            </div>
+            
+            <a href="" class="btn btn-login btn-danger btn-float"><i class="zmdi zmdi-arrow-forward"></i></a>
+            
+            <ul class="login-navigation">
+                <li data-block="#l-login" class="bgm-green">Login</li>
+                <li data-block="#l-register" class="bgm-red">Register</li>
+            </ul>
+        </div>
+        
+        <!-- Javascript Libraries -->
+        <script src="/bitin/assets/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bitin/assets/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        
+        <script src="/bitin/assets/vendors/bower_components/Waves/dist/waves.min.js"></script>
+        
+        <!-- Placeholder for IE9 -->
+        <!--[if IE 9 ]>
+            <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+        <![endif]-->
+        
+        <script src="/bitin/assets/js/functions.js"></script>
+        
+    </body>
+</html>
 </body>
 </html>
