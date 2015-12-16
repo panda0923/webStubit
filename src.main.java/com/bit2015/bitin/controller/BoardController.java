@@ -28,8 +28,6 @@ public class BoardController {
 	}		
 			
 			
-			
-			
 	/**		
 	 * @param model		
 	 * @return map("listData",게시판글목록을 list에 담고 그거다시 map에 담아서 리턴)		
@@ -49,8 +47,8 @@ public class BoardController {
 	 * @param model		
 	 * @return boardNo,title,content,userNo		
 	 */		
-	@RequestMapping( "/view/{no}" )		
-	public String view( @PathVariable( "no" ) Long no, Model model ) {		
+	@RequestMapping( "/view/{boardNo}" )		
+	public String view( @PathVariable( "boardNo" ) Long no, Model model ) {		
 		BoardVo vo = boardService.viewBoard( no );		
 		model.addAttribute( "vo", vo );		
 		return "/board/view";		

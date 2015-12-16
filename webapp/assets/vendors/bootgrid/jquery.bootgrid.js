@@ -1293,7 +1293,7 @@
          **/
         labels: {
             all: "All",
-            infos: "Showing {{ctx.start}} to {{ctx.end}} of {{ctx.total}} entries",
+            infos: "no min 게시글 {{ctx.total}} 중 {{ctx.start}}번 부터 {{ctx.end}}번 까지 게시글",
             loading: "Loading...",
             noResults: "No results found!",
             refresh: "Refresh",

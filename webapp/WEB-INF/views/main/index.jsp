@@ -34,473 +34,42 @@
 
 </head>
 <body>
-<%-- 
 	<c:import url="/WEB-INF/views/include/navi.jsp"></c:import>
 
- --%>	
-  <header id="header" class="clearfix" data-current-skin="blue">
-		<ul class="header-inner">
-			<c:choose>
-				<c:when test='${empty authUser }'>
+	<section id="main">
+		<div class="container">
+			<br>
 
-					<li class="hidden-xs"><a href="/bitin/index" class="m-l-10"><img
-							src="/bitin/assets/img/demo/logo.png" alt=""></a></li>
-					<li class="pull-right"><a href="/bitin/loginform" id="login"
-						title="login" data-toggle="popover" data-placement="bottom"><i
-							class="btn btn-inverse" value="login"> Login </i></a></li>
-					<li class="pull-right"><a href="/bitin/registerform" id="join"
-						title="join" data-toggle="popover" data-placement="bottom"> <i
-							class="btn btn-default" value="join"> Join </i>
-					</a></li>
-				</c:when>
-				<c:otherwise>
-					<li id="menu-trigger" data-trigger="#sidebar">
-						<div
-							class="btn btn-default btn-icon waves-effect waves-circle waves-float zmdi zmdi-apps">
-						</div>
-					</li>
-					<li class="hidden-xs"><a href="/bitin/index" class="m-l-10"><img
-							src="/bitin/assets/img/demo/logo.png" alt=""></a></li>
+			<div class="card-body card-padding">
+				<div id="carousel-example-generic" class="carousel slide"
+					data-ride="carousel">
 
 
-					<li class="pull-right">
-						<ul class="top-menu">
-
-							<li id="top-search"><a href=""><i
-									class="tm-icon zmdi zmdi-search"></i></a></li>
-
-							<li class="dropdown"><a data-toggle="dropdown" href="">
-									<i class="tm-icon zmdi zmdi-email"></i> <i class="tmn-counts">6</i>
-							</a>
-								<div class="dropdown-menu dropdown-menu-lg pull-right">
-									<div class="listview">
-										<div class="lv-header">Messages</div>
-										<div class="lv-body">
-											<a class="lv-item" href="">
-												<div class="media">
-													<div class="pull-left">
-														<img class="lv-img-sm" src="img/profile-pics/1.jpg" alt="">
-													</div>
-													<div class="media-body">
-														<div class="lv-title">David Belle</div>
-														<small class="lv-small">Cum sociis natoque
-															penatibus et magnis dis parturient montes</small>
-													</div>
-												</div>
-											</a> <a class="lv-item" href="">
-												<div class="media">
-													<div class="pull-left">
-														<img class="lv-img-sm" src="img/profile-pics/2.jpg" alt="">
-													</div>
-													<div class="media-body">
-														<div class="lv-title">Jonathan Morris</div>
-														<small class="lv-small">Nunc quis diam
-															diamurabitur at dolor elementum, dictum turpis vel</small>
-													</div>
-												</div>
-											</a> <a class="lv-item" href="">
-												<div class="media">
-													<div class="pull-left">
-														<img class="lv-img-sm" src="img/profile-pics/3.jpg" alt="">
-													</div>
-													<div class="media-body">
-														<div class="lv-title">Fredric Mitchell Jr.</div>
-														<small class="lv-small">Phasellus a ante et est
-															ornare accumsan at vel magnauis blandit turpis at augue
-															ultricies</small>
-													</div>
-												</div>
-											</a> <a class="lv-item" href="">
-												<div class="media">
-													<div class="pull-left">
-														<img class="lv-img-sm" src="img/profile-pics/4.jpg" alt="">
-													</div>
-													<div class="media-body">
-														<div class="lv-title">Glenn Jecobs</div>
-														<small class="lv-small">Ut vitae lacus sem
-															ellentesque maximus, nunc sit amet varius dignissim, dui
-															est consectetur neque</small>
-													</div>
-												</div>
-											</a> <a class="lv-item" href="">
-												<div class="media">
-													<div class="pull-left">
-														<img class="lv-img-sm" src="img/profile-pics/4.jpg" alt="">
-													</div>
-													<div class="media-body">
-														<div class="lv-title">Bill Phillips</div>
-														<small class="lv-small">Proin laoreet commodo eros
-															id faucibus. Donec ligula quam, imperdiet vel ante
-															placerat</small>
-													</div>
-												</div>
-											</a>
-										</div>
-										<a class="lv-footer" href="">View All</a>
-									</div>
-								</div></li>
-							<li class="dropdown"><a data-toggle="dropdown" href="">
-									<i class="tm-icon zmdi zmdi-notifications"></i> <i
-									class="tmn-counts">9</i>
-							</a>
-								<div class="dropdown-menu dropdown-menu-lg pull-right">
-									<div class="listview" id="notifications">
-										<div class="lv-header">
-											Notification
-
-											<ul class="actions">
-												<li class="dropdown"><a href=""
-													data-clear="notification"> <i
-														class="zmdi zmdi-check-all"></i>
-												</a></li>
-											</ul>
-										</div>
-										<div class="lv-body">
-											<a class="lv-item" href="">
-												<div class="media">
-													<div class="pull-left">
-														<img class="lv-img-sm" src="img/profile-pics/1.jpg" alt="">
-													</div>
-													<div class="media-body">
-														<div class="lv-title">David Belle</div>
-														<small class="lv-small">Cum sociis natoque
-															penatibus et magnis dis parturient montes</small>
-													</div>
-												</div>
-											</a> <a class="lv-item" href="">
-												<div class="media">
-													<div class="pull-left">
-														<img class="lv-img-sm" src="img/profile-pics/2.jpg" alt="">
-													</div>
-													<div class="media-body">
-														<div class="lv-title">Jonathan Morris</div>
-														<small class="lv-small">Nunc quis diam
-															diamurabitur at dolor elementum, dictum turpis vel</small>
-													</div>
-												</div>
-											</a> <a class="lv-item" href="">
-												<div class="media">
-													<div class="pull-left">
-														<img class="lv-img-sm" src="img/profile-pics/3.jpg" alt="">
-													</div>
-													<div class="media-body">
-														<div class="lv-title">Fredric Mitchell Jr.</div>
-														<small class="lv-small">Phasellus a ante et est
-															ornare accumsan at vel magnauis blandit turpis at augue
-															ultricies</small>
-													</div>
-												</div>
-											</a> <a class="lv-item" href="">
-												<div class="media">
-													<div class="pull-left">
-														<img class="lv-img-sm" src="img/profile-pics/4.jpg" alt="">
-													</div>
-													<div class="media-body">
-														<div class="lv-title">Glenn Jecobs</div>
-														<small class="lv-small">Ut vitae lacus sem
-															ellentesque maximus, nunc sit amet varius dignissim, dui
-															est consectetur neque</small>
-													</div>
-												</div>
-											</a> <a class="lv-item" href="">
-												<div class="media">
-													<div class="pull-left">
-														<img class="lv-img-sm" src="img/profile-pics/4.jpg" alt="">
-													</div>
-													<div class="media-body">
-														<div class="lv-title">Bill Phillips</div>
-														<small class="lv-small">Proin laoreet commodo eros
-															id faucibus. Donec ligula quam, imperdiet vel ante
-															placerat</small>
-													</div>
-												</div>
-											</a>
-										</div>
-
-										<a class="lv-footer" href="">View Previous</a>
-									</div>
-
-								</div></li>
-							<li class="dropdown hidden-xs"><a data-toggle="dropdown"
-								href=""> <i class="tm-icon zmdi zmdi-view-list-alt"></i> <i
-									class="tmn-counts">2</i>
-							</a>
-								<div class="dropdown-menu pull-right dropdown-menu-lg">
-									<div class="listview">
-										<div class="lv-header">Tasks</div>
-										<div class="lv-body">
-											<div class="lv-item">
-												<div class="lv-title m-b-5">HTML5 Validation Report</div>
-
-												<div class="progress">
-													<div class="progress-bar" role="progressbar"
-														aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"
-														style="width: 95%">
-														<span class="sr-only">95% Complete (success)</span>
-													</div>
-												</div>
-											</div>
-											<div class="lv-item">
-												<div class="lv-title m-b-5">Google Chrome Extension</div>
-
-												<div class="progress">
-													<div class="progress-bar progress-bar-success"
-														role="progressbar" aria-valuenow="80" aria-valuemin="0"
-														aria-valuemax="100" style="width: 80%">
-														<span class="sr-only">80% Complete (success)</span>
-													</div>
-												</div>
-											</div>
-											<div class="lv-item">
-												<div class="lv-title m-b-5">Social Intranet Projects</div>
-
-												<div class="progress">
-													<div class="progress-bar progress-bar-info"
-														role="progressbar" aria-valuenow="20" aria-valuemin="0"
-														aria-valuemax="100" style="width: 20%">
-														<span class="sr-only">20% Complete</span>
-													</div>
-												</div>
-											</div>
-											<div class="lv-item">
-												<div class="lv-title m-b-5">Bootstrap Admin Template</div>
-
-												<div class="progress">
-													<div class="progress-bar progress-bar-warning"
-														role="progressbar" aria-valuenow="60" aria-valuemin="0"
-														aria-valuemax="100" style="width: 60%">
-														<span class="sr-only">60% Complete (warning)</span>
-													</div>
-												</div>
-											</div>
-											<div class="lv-item">
-												<div class="lv-title m-b-5">Youtube Client App</div>
-
-												<div class="progress">
-													<div class="progress-bar progress-bar-danger"
-														role="progressbar" aria-valuenow="80" aria-valuemin="0"
-														aria-valuemax="100" style="width: 80%">
-														<span class="sr-only">80% Complete (danger)</span>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<a class="lv-footer" href="">View All</a>
-									</div>
-								</div></li>
-							<li class="hidden-xs" id="chat-trigger" data-trigger="#chat">
-								<a href=""><i class="tm-icon zmdi zmdi-comment-alt-text"></i></a>
-							</li>
-						</ul>
-					</li>
-				</c:otherwise>
-			</c:choose>
-		</ul>
-
-
-		<!-- Top Search Content -->
-		<div id="top-search-wrap">
-			<div class="tsw-inner">
-				<i id="top-search-close" class="zmdi zmdi-arrow-left"></i> <input
-					type="text">
-			</div>
-		</div>
-	</header> 
-	 <section id="main" data-layout="layout-1">
-		<aside id="sidebar" class="sidebar c-overflow">
-			<div class="profile-menu">
-				<a href="">
-					<div class="profile-pic">
-						<img src="/bitin/assets/img/profile-pics/1.jpg" alt="">
-					</div>
-
-					<div class="profile-info">
-						${authUser.userName  } <i class="zmdi zmdi-caret-down"></i>
-					</div>
-				</a>
-
-				<ul class="main-menu">
-					<li><a href="profile-about.html"><i
-							class="zmdi zmdi-account"></i> 내 정보</a></li>
-					<li><a href="/bitin/user/logout"><i
-							class="zmdi zmdi-time-restore"></i> Logout</a></li>
-				</ul>
-			</div>
-
-			<ul class="main-menu">
-				<li class="active"><a href="index.html"><i
-						class="zmdi zmdi-home"></i> 메인 페이지</a></li>
-
-                <!--  켈린더 -->
-				<li><a href="calendar.html"><i class="zmdi zmdi-calendar"></i>
-						일정표</a></li>
-                <!--  게시판 메뉴 -->
-				<li class="sub-menu"><a href=""><i
-						class="zmdi zmdi-view-list"></i> 게시판</a>
-
-					<ul>
-						<li><a href="form-elements.html">1게시판</a></li>
-						<li><a href="form-components.html">2게시판</a></li>
-					</ul></li>
-
-				<li class="sub-menu"><a href=""><i
-						class="zmdi zmdi-collection-text"></i> Forms</a>
-
-					<ul>
-						<li><a href="form-elements.html">Basic Form Elements</a></li>
-						<li><a href="form-components.html">Form Components</a></li>
-						<li><a href="form-examples.html">Form Examples</a></li>
-						<li><a href="form-validations.html">Form Validation</a></li>
-					</ul></li>
-				<li class="sub-menu"><a href=""><i
-						class="zmdi zmdi-trending-up"></i>차트</a>
-					<ul>
-						<li><a href="flot-charts.html">Flot Charts</a></li>
-						<li><a href="other-charts.html">Other Charts</a></li>
-					</ul></li>
-				<li class="sub-menu"><a href=""><i class="zmdi zmdi-image"></i>사진첩</a>
-					<ul>
-						<li><a href="photos.html">Default</a></li>
-						<li><a href="photo-timeline.html">Timeline</a></li>
-					</ul></li>
-
-			</ul>
-		</aside>
-
-		<aside id="chat" class="sidebar c-overflow">
-
-			<div class="chat-search">
-				<div class="fg-line">
-					<input type="text" class="form-control" placeholder="Search People">
-				</div>
-			</div>
-
-			<div class="listview">
-				<a class="lv-item" href="">
-					<div class="media">
-						<div class="pull-left p-relative">
-							<img class="lv-img-sm" src="img/profile-pics/2.jpg" alt="">
-							<i class="chat-status-busy"></i>
-						</div>
-						<div class="media-body">
-							<div class="lv-title">Jonathan Morris</div>
-							<small class="lv-small">Available</small>
-						</div>
-					</div>
-				</a> <a class="lv-item" href="">
-					<div class="media">
-						<div class="pull-left">
-							<img class="lv-img-sm" src="img/profile-pics/1.jpg" alt="">
-						</div>
-						<div class="media-body">
-							<div class="lv-title">David Belle</div>
-							<small class="lv-small">Last seen 3 hours ago</small>
-						</div>
-					</div>
-				</a> <a class="lv-item" href="">
-					<div class="media">
-						<div class="pull-left p-relative">
-							<img class="lv-img-sm" src="img/profile-pics/3.jpg" alt="">
-							<i class="chat-status-online"></i>
-						</div>
-						<div class="media-body">
-							<div class="lv-title">Fredric Mitchell Jr.</div>
-							<small class="lv-small">Availble</small>
-						</div>
-					</div>
-				</a> <a class="lv-item" href="">
-					<div class="media">
-						<div class="pull-left p-relative">
-							<img class="lv-img-sm" src="img/profile-pics/4.jpg" alt="">
-							<i class="chat-status-online"></i>
-						</div>
-						<div class="media-body">
-							<div class="lv-title">Glenn Jecobs</div>
-							<small class="lv-small">Availble</small>
-						</div>
-					</div>
-				</a> <a class="lv-item" href="">
-					<div class="media">
-						<div class="pull-left">
-							<img class="lv-img-sm" src="img/profile-pics/5.jpg" alt="">
-						</div>
-						<div class="media-body">
-							<div class="lv-title">Bill Phillips</div>
-							<small class="lv-small">Last seen 3 days ago</small>
-						</div>
-					</div>
-				</a> <a class="lv-item" href="">
-					<div class="media">
-						<div class="pull-left">
-							<img class="lv-img-sm" src="img/profile-pics/6.jpg" alt="">
-						</div>
-						<div class="media-body">
-							<div class="lv-title">Wendy Mitchell</div>
-							<small class="lv-small">Last seen 2 minutes ago</small>
-						</div>
-					</div>
-				</a> <a class="lv-item" href="">
-					<div class="media">
-						<div class="pull-left p-relative">
-							<img class="lv-img-sm" src="img/profile-pics/7.jpg" alt="">
-							<i class="chat-status-busy"></i>
-						</div>
-						<div class="media-body">
-							<div class="lv-title">Teena Bell Ann</div>
-							<small class="lv-small">Busy</small>
-						</div>
-					</div>
-				</a>
-			</div>
-		</aside> 
-
-		<section id="container">
-			<div class="container">
-				<div class="container"></div>
-				<br>
-
-				<div class="card-body card-padding">
-					<div id="carousel-example-generic" class="carousel slide"
-						data-ride="carousel">
-
-
-						<!-- Wrapper for slides -->
-						<div class="carousel-inner" role="listbox">
-							<div class="item active">
-								<img src="/bitin/assets/media/carousel/c-4.jpg" alt="">
-								<div class="carousel-caption">
-									<h3>StuBit Application for Android</h3>
-									<p>안드로이드 어플을 다운받아주세요</p>
-								</div>
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<img src="/bitin/assets/media/carousel/c-4.jpg" alt="">
+							<div class="carousel-caption">
+								<h3>StuBit Application for Android</h3>
+								<p>안드로이드 어플을 다운받아주세요</p>
+								<p>주요 기능을 읽어보세요</p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-		<br>
-		<div class="container c-alt">
-
-			<div class="text-center">
-				<h2 class="f-400">StuBit</h2>
-				<p class="c-gray m-t-20 m-b-20">Study 와 Bit의 합성어(가제). 수업관리
-					어플리케이션과 반응형 웹으로 수업의 편의성을 위해 제작중입니다.</p>
-			</div>
-
 		</div>
+		<br>
+		<br>
 
 		<div class="container c-alt">
-
 			<div class="clearfix"></div>
-
 			<div class="row m-t-25">
-
 				<div class="col-sm-4">
 					<div class="card">
 						<div class="card-header bgm-orange m-b-20">
 							<h2>
-								메세징 서비스 <small>그룹원끼리 대화를 하세요!</small>
+								게시판  <small>게시판 생성 및 사용</small>
 							</h2>
 							<ul class="actions actions-alt">
 								<li class="dropdown"><a href="" data-toggle="dropdown">
@@ -510,19 +79,16 @@
 							<button class="btn bgm-amber btn-float waves-effect">
 								<a href="/bitin/board/list"><i class="zmdi zmdi-mail-send"></i></a>
 							</button>
-							
 						</div>
-
 						<div class="card-body card-padding"></div>
 					</div>
 				</div>
-
 
 				<div class="col-sm-4">
 					<div class="card">
 						<div class="card-header bgm-brown m-b-20">
 							<h2>
-								메세징 서비스 <small>그룹원끼리 대화를 하세요!</small>
+								채팅 <small>친구 또는 다른 회원과 채팅</small>
 							</h2>
 							<ul class="actions actions-alt">
 								<li class="dropdown"><a href="" data-toggle="dropdown">
@@ -542,7 +108,7 @@
 					<div class="card">
 						<div class="card-header bgm-green m-b-20">
 							<h2>
-								메세징 서비스 <small>그룹원끼리 대화를 하세요!</small>
+								위치기반 출석 시스템<small>어플리케이션으로 출석</small>
 							</h2>
 							<ul class="actions actions-alt">
 								<li class="dropdown"><a href="" data-toggle="dropdown">
@@ -572,7 +138,7 @@
 					<div class="card">
 						<div class="card-header bgm-lightblue m-b-20">
 							<h2>
-								메세징 서비스 <small>그룹원끼리 대화를 하세요!</small>
+								질문과 투표<small>수업 중 질문을 앱으로 하고 투표를 통해 진행률 조정</small>
 							</h2>
 							<ul class="actions actions-alt">
 								<li class="dropdown"><a href="" data-toggle="dropdown">
@@ -593,7 +159,7 @@
 					<div class="card">
 						<div class="card-header bgm-purple m-b-20">
 							<h2>
-								메세징 서비스 <small>그룹원끼리 대화를 하세요!</small>
+								공란 <small>새로운 기능을 찾아보자</small>
 							</h2>
 							<ul class="actions actions-alt">
 								<li class="dropdown"><a href="" data-toggle="dropdown">
@@ -632,20 +198,8 @@
 
 			</div>
 		</div>
-
 	</section>
 
-	<!-- <footer id="footer">
-		Copyright &copy; 2015 Type-B StuBit
-
-		<ul class="f-menu">
-			<li><a href="">Home</a></li>
-			<li><a href="">Dashboard</a></li>
-			<li><a href="">Reports</a></li>
-			<li><a href="">Support</a></li>
-			<li><a href="">Contact</a></li>
-		</ul>
-	</footer> -->
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 
 	<!-- Javascript Libraries -->
@@ -688,7 +242,8 @@
 
 	<script src="/bitin/assets/js/charts.js"></script>
 	<script src="/bitin/assets/js/functions.js"></script>
-	
+	<script src="/bitin/assets/js/demo.js"></script>
+
 
 
 </body>

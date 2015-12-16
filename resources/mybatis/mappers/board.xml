@@ -165,10 +165,9 @@
 	
 	<select id="selectByNo" resultType="BoardVo" parameterType="long">
 		<![CDATA[
-		select board_no as boardNO,
+		select board_no as boardNo,
 			   title,
 			   content,
-			   user_no as userNo, 
 		  from b_board
 		 where  board_no=#{boardNo }			
 		]]>

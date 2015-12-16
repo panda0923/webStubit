@@ -464,7 +464,7 @@
                     startWith = ((offsetRight >= this.options.padding) ?
                         Math.max(offsetLeft, 1) :
                         Math.max((offsetLeft - this.options.padding + offsetRight), 1)),
-                    maxCount = this.options.padding * 2 + 1,
+                    maxCount = this.options.padding * 1 + 1,
                     count = (totalPages >= maxCount) ? maxCount : totalPages;
 
                 renderPaginationItem.call(this, pagination, "first", "<i class='zmdi zmdi-more-horiz'></i>", "first")
@@ -1254,7 +1254,7 @@
             responsiveTable: "table-responsive",
 
             right: "text-right",
-            search: "search form-group", // must be a unique class name or constellation of class names within the header and footer
+            search: "search form-group pull-right", // must be a unique class name or constellation of class names within the header and footer
             searchField: "search-field form-control",
             selectBox: "select-box", // must be a unique class name or constellation of class names within the entire table
             selectCell: "select-cell", // must be a unique class name or constellation of class names within the entire table
@@ -1292,12 +1292,12 @@
          * @for defaults
          **/
         labels: {
-            all: "All",
-            infos: "Showing {{ctx.start}} to {{ctx.end}} of {{ctx.total}} entries",
+            all: "전체보기",
+            infos: "게시글 {{ctx.total}} 중 {{ctx.start}}번 부터 {{ctx.end}}번 까지 게시글",
             loading: "Loading...",
-            noResults: "No results found!",
-            refresh: "Refresh",
-            search: "Search"
+            noResults: "검색결과가 없습니다.",
+            refresh: "새로고침",
+            search: "검색"
         },
 
         /**
@@ -1361,7 +1361,7 @@
             actions: "<div class=\"{{css.actions}}\"></div>",
             body: "<tbody></tbody>",
             cell: "<td class=\"{{ctx.css}}\" style=\"{{ctx.style}}\">{{ctx.content}}</td>",
-            footer: "<div id=\"{{ctx.id}}\" class=\"{{css.footer}}\"><div class=\"row\"><div class=\"col-sm-6\"><p class=\"{{css.pagination}}\"></p></div><div class=\"col-sm-6 infoBar\"><p class=\"{{css.infos}}\"></p></div></div></div>",
+            footer: "<div id=\"{{ctx.id}}\" class=\"{{css.footer}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"><p class=\"{{css.pagination}}\"></p><button class=\"btn btn-primary m-t-5\" type=\"summit\" style=\"float:right; margin-left:5px;\">삭제</button><button class=\"btn btn-primary m-t-5\" type=\"summit\" style=\"float:right\">글 쓰기</button></div></div></div>",
             header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\"><p class=\"{{css.search}}\"></p><p class=\"{{css.actions}}\"></p></div></div></div>",
             headerCell: "<th data-column-id=\"{{ctx.column.id}}\" class=\"{{ctx.css}}\" style=\"{{ctx.style}}\"><a href=\"javascript:void(0);\" class=\"{{css.columnHeaderAnchor}} {{ctx.sortable}}\"><span class=\"{{css.columnHeaderText}}\">{{ctx.column.text}}</span>{{ctx.icon}}</a></th>",
             icon: "<span class=\"{{css.icon}} {{ctx.iconCss}}\"></span>",
