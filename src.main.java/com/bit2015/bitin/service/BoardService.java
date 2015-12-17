@@ -19,18 +19,16 @@ public class BoardService {
 	public Map<String, Object> listBoard() {
 		
 			List<BoardVo> list = boardDao.getList();
-
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put( "list", list );
-			
 			return map;
 	}
 	
 	
 	
-	public BoardVo viewBoard( Long no ){
-		BoardVo vo = boardDao.get( no );
-		boardDao.updateViewCount( no );
+	public BoardVo viewBoard( Long boardNo ){
+		BoardVo vo = boardDao.get( boardNo );
+		//boardDao.updateViewCount( boardNo );
 		return vo;
 	}
 }

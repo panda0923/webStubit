@@ -20,8 +20,6 @@
 	     </mvc:argument-resolvers>
 	</mvc:annotation-driven>
 	
-	
-	  <!-- Interceptors -->
     <mvc:interceptors>
         <mvc:interceptor>
         	<mvc:mapping path="/**" />
@@ -39,7 +37,6 @@
     		<bean class="com.bit2015.bitin.interceptor.AuthLogoutInterceptor" />
         </mvc:interceptor>        
     </mvc:interceptors>
-    
     
 	<!-- 메세지 컨버터 등록 -->
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">

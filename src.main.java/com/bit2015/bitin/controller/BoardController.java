@@ -25,8 +25,11 @@ public class BoardController {
 	@RequestMapping("/writeform")		
 	public String writeForm(){		
 		return "/board/writeform";		
+	}
+	@RequestMapping("/view")		
+	public String viewForm(){		
+		return "/board/view";		
 	}		
-			
 			
 	/**		
 	 * @param model		
@@ -39,8 +42,8 @@ public class BoardController {
 		model.addAttribute( "listData", map );		
 				
 		return "/board/list";		
-	}		
-			
+	}	
+	
 			
 	/**		
 	 * @param no		
@@ -48,8 +51,8 @@ public class BoardController {
 	 * @return boardNo,title,content,userNo		
 	 */		
 	@RequestMapping( "/view/{boardNo}" )		
-	public String view( @PathVariable( "boardNo" ) Long no, Model model ) {		
-		BoardVo vo = boardService.viewBoard( no );		
+	public String view( @PathVariable( "boardNo" ) Long boardNo, Model model ) {		
+		BoardVo vo = boardService.viewBoard( boardNo );		
 		model.addAttribute( "vo", vo );		
 		return "/board/view";		
 	}		

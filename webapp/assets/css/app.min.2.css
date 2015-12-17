@@ -582,14 +582,15 @@ html.ismobile .page-loader {
 }
 
 #footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   text-align: center;
   width: 100%;
   height: 110px;
-  color: #a2a2a2;
-  padding-top: 35px;
-  padding-bottom: 15px;
+  color: #ffffff;
+  padding-top: 30px;
+  padding-bottom: 10px;
+ 
 }
 
 #footer .f-menu {
@@ -608,7 +609,7 @@ html.ismobile .page-loader {
 }
 
 #footer .f-menu > li > a {
-  color: #a2a2a2;
+  color: #ffffff;
 }
 
 #footer .f-menu > li > a:hover {

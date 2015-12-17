@@ -35,9 +35,9 @@
 </head>
 <body>
 	<c:import url="/WEB-INF/views/include/navi.jsp"></c:import>
-	
-	<section id="container">
-		<div class="container">
+
+	<section id="content">
+		<div class="content">
 			<div class="card">
 				<div class="card-header">
 					<h2>
@@ -46,22 +46,23 @@
 				</div>
 
 				<div class="table-responsive">
-					<table id="data-table-selection" class="table table-striped">
+					<table id="data-table-basic" class="table table-striped">
 						<thead>
 							<tr>
-								<th data-column-id="id" data-type="numeric">번호</th>
+								<th data-column-id="no" data-type="numeric">번호</th>
 								<th data-column-id="sender">작성자</th>
-								<th data-column-id="title">제목</th>
+								<th data-column-id="title" data-formatter="link">제목</th>
 								<th data-column-id="received" data-order="desc">작성일</th>
 							</tr>
 						</thead>
+						<%-- <tbody var='vo' varStatus='status' onclick="location.href='/bitin/board/view/${vo.boardNo }'" style="cursor: pointer"> --%>
 						<tbody>
-							<c:set var='count' value='${fn:length(listData.list) }' />
 							<c:forEach items='${listData.list }' var='vo' varStatus='status'>
+								<c:set var='count' value='${fn:length(listData.list) }' />
 								<tr>
 									<td>${vo.boardNo }</td>
 									<td>${vo.userName }</td>
-									<td><a href="/bitin/board/view/${vo.boardNo }">${vo.title }</a></td>
+									<td>${vo.title }</td>
 									<td>${vo.regDate }</td>
 								</tr>
 							</c:forEach>
@@ -75,9 +76,6 @@
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 
 	<!-- Javascript Libraries -->
-	<script>
-		var authUser = "${authUser.userName}";
-	</script>
 	<script
 		src="/bitin/assets/vendors/bower_components/jquery/dist/jquery.min.js"></script>
 	<script
@@ -126,24 +124,23 @@
 		src="/bitin/assets/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js"></script>
 	<script src="/bitin/assets/vendors/bootgrid/jquery.bootgrid.updated.js"></script>
 
-	<!-- Data Table -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			//Selection
-			$("#data-table-selection").bootgrid({
-				css : {
-					icon : 'zmdi icon',
-					iconColumns : 'zmdi-view-module',
-					iconDown : 'zmdi-expand-more',
-					iconRefresh : 'zmdi-refresh',
-					iconUp : 'zmdi-expand-less'
-				},
-				selection : true,
-				multiSelect : true,
-				rowSelect : true,
-				keepSelection : true
-			});
-		});
+	<script>
+		//Basic Example
+		$("#data-table-basic").bootgrid(
+				{
+					css : {
+						icon : 'zmdi icon',
+						iconColumns : 'zmdi-view-module',
+						iconDown : 'zmdi-expand-more',
+						iconRefresh : 'zmdi-refresh',
+						iconUp : 'zmdi-expand-less'
+					},
+					formatters : {
+						"link" : function(column, row) {
+							return "<a href=\"view/"+row.no+"\">"+row.title+"</a>";
+						}
+					}
+				});
 	</script>
 </body>
 </html>

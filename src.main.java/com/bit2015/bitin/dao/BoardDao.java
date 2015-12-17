@@ -26,8 +26,8 @@ public class BoardDao {
 		sqlSession.update( "board.updateViewCount", no );
 	}
 	
-	public BoardVo get( Long no ) {
-		BoardVo vo = sqlSession.selectOne( "board.selectByNo", no );
+	public BoardVo get( Long boardNo ) {
+		BoardVo vo = sqlSession.selectOne( "board.selectByNo", boardNo );
 		return vo;
 	}
 }
